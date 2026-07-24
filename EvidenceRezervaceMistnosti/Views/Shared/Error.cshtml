@@ -1,0 +1,19 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">Při zpracování vašeho požadavku došlo k chybě.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>ID žádosti:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Režim vývoje</h3>
+<p>
+    Výměna na <strong>Rozvoj</strong> prostředí zobrazí podrobnější informace o chybě, ke které došlo..
+</p>
