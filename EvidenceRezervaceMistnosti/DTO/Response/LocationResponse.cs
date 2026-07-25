@@ -1,10 +1,9 @@
-﻿namespace EvidenceRezervaceMistnosti.Models
+﻿namespace EvidenceRezervaceMistnosti.DTO.Response
 {
-    public class Location
+    public class LocationResponse
     {
         public int LocationId { get; set; }
         public required string Name { get; set; }
         public required bool IsActive { get; set; }
-        public virtual ICollection<Room>? Rooms { get; set; } = null!;
     }
 }

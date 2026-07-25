@@ -34,6 +34,14 @@ namespace EvidenceRezervaceMistnosti.Models
 
                 e.Property(e => e.RoomId)
                     .ValueGeneratedOnAdd();
+
+                e.HasIndex(e => e.Name)
+                    .IsUnique();
+
+                e.HasOne(e => e.Location)
+                    .WithMany()
+                    .HasForeignKey(e => e.LocationId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Location>(e =>
@@ -46,13 +54,29 @@ namespace EvidenceRezervaceMistnosti.Models
             modelBuilder.Entity<Equipment>(e =>
             {
                 e.HasKey(e => e.EquipmentId);
+
                 e.Property(e => e.EquipmentId)
                     .ValueGeneratedOnAdd();
+
+                e.HasMany(e => e.RoomEquipment)
+                    .WithOne(re => re.Equipment)
+                    .HasForeignKey(re => re.EquipmentId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<RoomEquipment>(e =>
             {
                 e.HasKey(e => new { e.RoomId, e.EquipmentId });
+
+                e.HasOne(e => e.Equipment)
+                    .WithMany(e => e.RoomEquipment)
+                    .HasForeignKey(e => e.EquipmentId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasOne(e => e.Room)
+                    .WithMany(e => e.RoomEquipment)
+                    .HasForeignKey(e => e.RoomId) 
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

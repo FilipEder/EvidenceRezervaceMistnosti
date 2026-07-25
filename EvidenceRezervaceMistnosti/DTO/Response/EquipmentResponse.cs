@@ -1,10 +1,11 @@
-﻿namespace EvidenceRezervaceMistnosti.Models
+﻿using EvidenceRezervaceMistnosti.Models;
+
+namespace EvidenceRezervaceMistnosti.DTO.Response
 {
-    public class Equipment
+    public class EquipmentResponse
     {
         public int EquipmentId { get; set; }
         public required string Name { get; set; }
         public required bool IsActive { get; set; }
-        public virtual List<RoomEquipment> RoomEquipment { get; set; } = null!;
     }
 }

@@ -1,7 +1,9 @@
-﻿using EvidenceRezervaceMistnosti.DTO;
+﻿using EvidenceRezervaceMistnosti.DTO.Requests;
+using EvidenceRezervaceMistnosti.DTO.Response;
 using EvidenceRezervaceMistnosti.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace EvidenceRezervaceMistnosti.API
 {
@@ -9,99 +11,179 @@ namespace EvidenceRezervaceMistnosti.API
     [ApiController]
     public class ReservationApiController : ControllerBase
     {
-        private readonly ILogger<ReservationApiController> _logger;
         private readonly ReservationContext _ctx;
-        public ReservationApiController(ILogger<ReservationApiController> logger, ReservationContext ctx)
+        private readonly ILogger<ReservationApiController> _logger;
+        public ReservationApiController(ReservationContext ctx, ILogger<ReservationApiController> logger)
         {
-            _logger = logger;
             _ctx = ctx;
+            _logger = logger;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Reservation>>> Get([FromQuery] DateOnly? date)
+        public async Task<ActionResult<List<ReservationResponse>>> Get([FromQuery] DateOnly? date)
         {
             try
             {
                 List<Reservation>? reservations = await _ctx.Reservation
                     .Include(r => r.Room)
-                    .AsNoTracking().ToListAsync();
+                    .AsNoTracking()
+                    .Where(e => e.IsActive)
+                    .ToListAsync();
 
                 if(date.HasValue)
                 {
-                    reservations = reservations.Where(r => r.DateReservation == date.Value).ToList();
+                    reservations = reservations
+                        .Where(r => r.DateReservation == date.Value)
+                        .ToList();
                 }
 
                 if (reservations.Count == 0)
                 {
-                    _logger.LogWarning("No reservations found");
-                    return NotFound(new
-                    {
-                        message = $"Žádné rezervace nebyly nalezeny"
-                    });
+                    _logger.LogWarning("Žádné rezervace nebyly nalezeny");
+                    return Problem(
+                            type: "",
+                            statusCode: StatusCodes.Status404NotFound,
+                            title: "Žádné rezervace nebyly nalezeny",
+                            detail: "Vytvořte novou rezervaci",
+                            instance: HttpContext.Request.Path
+                        );
                 };
 
-                return Ok(reservations);
+                List<ReservationResponse> response = reservations.Select(r => new ReservationResponse
+                {
+                    ReservationId = r.ReservationId,
+                    ReservationName = r.Name,
+                    LastName = r.LastName,
+                    Email = r.Email,
+                    DateReservation = r.DateReservation.ToString("dd.MM.yyyy"),
+                    TimeFrom = r.TimeFrom.ToString("HH:mm"),
+                    TimeTo = r.TimeTo.ToString("HH:mm"),
+                    NumberOfPeople = r.NumberOfPeople,
+                    Description = r.Description,
+                    RoomId = r.RoomId,
+                    RoomName = r.Room!.Name,
+                    RoomCapacity = r.Room!.Capacity,
+                    LocationId = r.Room!.LocationId,
+                    ReservationIsActive = r.IsActive,
+                    RoomIsActive = r.Room!.IsActive
+                }).ToList();
+
+                _logger.LogInformation("Získání rezervací proběhlo úspěšně");
+                return Ok(response);
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex, "Error: fetching reservations");
-                return StatusCode(500);
+                _logger.LogError(ex, "Chyba při získávání rezervací");
+                return Problem(
+                    type: "",
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Chyba při získávání rezervací",
+                    detail: "Zkuste to později, pokud by problém nadále trval, kontaktujte administrátora.",
+                    instance: HttpContext.Request.Path
+                );
             }
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Reservation>> GetById(int id)
+        public async Task<ActionResult<ReservationResponse>> GetById(int id)
         {
             try
             {
-                Reservation? reservation = await _ctx.Reservation.FindAsync(id);
+                Reservation? reservation = await _ctx.Reservation
+                    .Include(e => e.Room)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(e => e.ReservationId == id && e.IsActive);
+
                 if (reservation == null)
                 {
-                    return NotFound(new
-                    {
-                        message = "Rezervace nebyla nalezena"
-                    });
+                    _logger.LogWarning("Rezervace nebyla nalezena");
+                    return Problem(
+                        type: "",
+                        statusCode: StatusCodes.Status404NotFound,
+                        title: "Rezervace nebyla nalezena",
+                        detail: "Zkuste jiný identifikátor rezervace.",
+                        instance: HttpContext.Request.Path
+                    );
                 }
-                return Ok(reservation);
+
+                ReservationResponse response = new ReservationResponse
+                {
+                    ReservationId = reservation.ReservationId,
+                    ReservationName = reservation.Name,
+                    LastName = reservation.LastName,
+                    Email = reservation.Email,
+                    DateReservation = reservation.DateReservation.ToString("dd.MM.yyyy"),
+                    TimeFrom = reservation.TimeFrom.ToString("HH:mm"),
+                    TimeTo = reservation.TimeTo.ToString("HH:mm"),
+                    NumberOfPeople = reservation.NumberOfPeople,
+                    Description = reservation.Description,
+                    RoomId = reservation.RoomId,
+                    RoomName = reservation.Room!.Name,
+                    RoomCapacity = reservation.Room!.Capacity,
+                    LocationId = reservation.Room!.LocationId,
+                    ReservationIsActive = reservation.IsActive,
+                    RoomIsActive = reservation.Room!.IsActive
+                };
+
+                _logger.LogInformation("Získání rezervace proběhlo úspěšně {reservationId}", reservation.ReservationId);
+                return Ok(response);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error: fetching reservation by ID");
-                return StatusCode(500);
+                _logger.LogError(ex, "Chyba při získávání rezervace {reservationId}", id);
+                return Problem(
+                    type: "",
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Chyba při získávání rezervace",
+                    detail: "Zkuste to později, pokud by problém nadále trval, kontaktujte administrátora.",
+                    instance: HttpContext.Request.Path
+                );
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult<Reservation>> Post(ReservationDTORequest request)
+        public async Task<ActionResult> Post(ReservationRequest request)
         {
+            await using var transaction = await _ctx.Database
+                .BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
             try
             {
                 // Validation
-
-                if(request.TimeTo < request.TimeFrom)
+                if (request.TimeTo < request.TimeFrom)
                 {
-                    return Conflict(new
-                    {
-                        message = "Čas (od) a (do) musí být ve formátu např. (od 14:30 - do 16:30) " +
-                        "nemůže být (od 12:30 do 9:00)"
-                    });
+                    _logger.LogWarning("Čas není ve správném formátu: {timeFrom} - {timeTo}", request.TimeFrom, request.TimeTo);
+                    return Problem(
+                        type: "",
+                        statusCode: StatusCodes.Status400BadRequest,
+                        title: "Čas není ve správném formátu",
+                        detail: "Čas do musí být po čase od, např. (14:30 - 16:30)",
+                        instance: HttpContext.Request.Path
+                    );
                 }
 
                 Reservation? conflictReservation = await _ctx.Reservation
-                    .Where(e => e.DateReservation == request.DateReservation &&
-                    (e.TimeFrom <= request.TimeFrom && e.TimeTo >= request.TimeFrom ||
-                    e.TimeFrom <= request.TimeTo && e.TimeTo >= request.TimeTo ||
-                    request.TimeFrom <= e.TimeFrom && request.TimeTo >= e.TimeFrom ||
-                    request.TimeFrom <= e.TimeTo && request.TimeTo >= e.TimeTo))
-                    .FirstOrDefaultAsync();
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(e =>
+                    e.RoomId == request.RoomId &&
+                    e.DateReservation == request.DateReservation &&
+                    (e.TimeFrom < request.TimeTo &&
+                        request.TimeFrom < e.TimeTo));
 
                 if (conflictReservation != null)
                 {
-                    return Conflict(new
-                    {
-                        message = $"Tento čas {request.TimeFrom.ToString("HH:mm")}-{request.TimeTo.ToString("HH:mm")} se přelína s časem " +
-                        $"jiné rezervace {conflictReservation.TimeFrom.ToString("HH:mm")}-{conflictReservation.TimeTo.ToString("HH:mm")}, změň čas či datum"
-                    });
+                    _logger.LogWarning("Termín rezervace je obsazený: {timeFrom} - {timeTo}", request.TimeFrom, request.TimeTo);
+                    return Problem(
+                    type: "",
+                    title: "Termín rezervace je obsazený",
+                    statusCode: StatusCodes.Status409Conflict,
+                    detail:
+                        $"Požadovaný čas " +
+                        $"{request.TimeFrom.ToString("HH:mm")}-{request.TimeTo.ToString("HH:mm")} " +
+                        $"se překrývá s rezervací " +
+                        $"{conflictReservation.TimeFrom.ToString("HH:mm")}-" +
+                        $"{conflictReservation.TimeTo.ToString("HH:mm")}.",
+                    instance: HttpContext.Request.Path
+                    );
                 }
 
                 Reservation reservation = new Reservation
@@ -114,16 +196,27 @@ namespace EvidenceRezervaceMistnosti.API
                     TimeTo = request.TimeTo,
                     NumberOfPeople = request.NumberOfPeople,
                     Description = request.Description,
-                    RoomId = request.RoomId
+                    RoomId = request.RoomId,
+                    IsActive = true
                 };
                 _ctx.Reservation.Add(reservation);
                 await _ctx.SaveChangesAsync();
-                return CreatedAtAction(nameof(Post), new { id = reservation.ReservationId }, reservation);
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Rezervace byla vytvořena úspěšně {reservationId}", reservation.ReservationId);
+                return Created();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error: creating reservation");
-                return StatusCode(500);
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Chyba při vytváření rezervace");
+                return Problem(
+                    type: "",
+                    title: "Chyba při vytváření rezervace",
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    detail: "Zkuste to později, pokud by problém nadále trval, kontaktujte administrátora.",
+                    instance: HttpContext.Request.Path
+                    );
             }
         }
     }

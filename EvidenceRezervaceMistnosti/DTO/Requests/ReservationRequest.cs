@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EvidenceRezervaceMistnosti.DTO
+namespace EvidenceRezervaceMistnosti.DTO.Requests
 {
-    public class ReservationDTORequest
+    public class ReservationRequest
     {
         [Required(ErrorMessage = "Jméno je povinný")]
         [MaxLength(30, ErrorMessage = "Jméno nesmí být delší než 30 znaků")]

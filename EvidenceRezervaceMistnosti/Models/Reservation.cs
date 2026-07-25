@@ -15,6 +15,7 @@
         public string? Description { get; set; }
         // Mistnost
         public int RoomId { get; set; }
-        public virtual Room? Room { get; set; }
+        public required bool IsActive { get; set; }
+        public virtual Room? Room { get; set; } = null!;
     }
 }
