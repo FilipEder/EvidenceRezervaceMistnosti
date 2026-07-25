@@ -2,6 +2,98 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="w-100 h-100 d-flex justify-content-center align-items-center">
-    <h1>Evidence rezervací zasedacích místností</h1>
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+    <h2 class="mb-3 header">Evidence rezervací zasedacích místností</h2>
+    <div class="container reservation-container">
+        <div class="row h-100">
+            <div class="col-2 rightBorder">
+                @* Kapacita Filtrace místnosti*@
+                <div class="row bottomBorderGreen filterContainer mt-1" id="CapacityFilter">
+                    <div class="filterHeader">
+                        <p>Kapacita</p>
+                    </div>
+                    <div class="filterInputContainer">
+                        <p>Od</p>
+                        <input class="form-control" type="number"/>
+                    </div>
+                    <div class="filterInputContainer">
+                        <p>Do</p>
+                        <input class="form-control" type="number"/>
+                    </div>
+                </div>
+                @* Datum Filtrace pro místnosti*@
+                <div class="row bottomBorderGreen filterContainer mt-1" id="DateFilter">
+                    <div class="filterHeader">
+                        <p>Datum</p>
+                    </div>
+                    <div class="filterInputContainer">
+                        <p>Den</p>
+                        <input class="form-control" type="date" />
+                    </div>
+                    <div class="filterInputContainer">
+                        <p>Od</p>
+                        <input class="form-control" type="time" />
+                    </div>
+                    <div class="filterInputContainer">
+                        <p>Do</p>
+                        <input class="form-control" type="time" />
+                    </div>
+                </div>
+                @* Filtrace umístění pro místnosti*@
+                <div class="row bottomBorderGreen filterContainer mt-1" id="DateFilter">
+                    <div class="filterHeader">
+                        <p>Umístění</p>
+                    </div>
+                    <div class="filterInputContainer">
+                        <select class="form-select filterSelect" aria-label="Floating label select example">
+                            <option selected>----</option>
+                            <option value="1">1.patro</option>
+                            <option value="2">2.patro</option>
+                            <option value="3">3.patro</option>
+                            <option value="4">4.patro</option>
+                            <option value="5">5.patro</option>
+                            <option value="6">6.patro</option>
+                        </select>
+                    </div>
+                </div>
+                @* Filtrace vybavení pro místnosti*@
+                <div class="row bottomBorderGreen filterContainer mt-1" id="DateFilter">
+                    <div class="filterHeader">
+                        <p>Vybavení</p>
+                    </div>
+                    <div class="filterInputContainer">
+                        <select class="form-select filterSelect" aria-label="Floating label select example">
+                            <option selected>----</option>
+                            <option value="1">1.patro</option>
+                            <option value="2">2.patro</option>
+                            <option value="3">3.patro</option>
+                            <option value="4">4.patro</option>
+                            <option value="5">5.patro</option>
+                            <option value="6">6.patro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        <input class="form-control" name="text" placeholder="Vyhledej vybavení či umístění..." type="search">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6 primaryDetailContainer selected">
+                        <a class="primaryDetailLink" href="">Rezervace</a>
+                    </div>
+                    <div class="col-6 primaryDetailContainer">
+                        <a class="primaryDetailLink" href="">Mistnosti</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col detailContainer">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

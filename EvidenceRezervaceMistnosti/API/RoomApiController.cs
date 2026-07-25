@@ -23,14 +23,14 @@ namespace EvidenceRezervaceMistnosti.API
         {
             try
             {
-                List<Room> rooms = await _ctx.Room.ToListAsync();
+                List<Room> rooms = await _ctx.Room.Include(r => r.Reservations).ToListAsync();
 
                 if (rooms.Count == 0)
                 {
                     _logger.LogWarning("No rooms found");
                     return NotFound(new
                     {
-
+                        message = "Žádné místnosti nebyly nalezeny"
                     });
                 };
 
@@ -77,13 +77,13 @@ namespace EvidenceRezervaceMistnosti.API
                 {
                     Name = request.Name.Trim(),
                     Capacity = request.Capacity,
-                    Location = request.Location.Trim(),
+                    LocationId = request.LocationId,
                     Gear = request.Gear.Trim()
                 };
 
                 _ctx.Room.Add(room);
                 await _ctx.SaveChangesAsync();
-                return CreatedAtAction(nameof(GetById), new { id = room.Id }, room);
+                return CreatedAtAction(nameof(GetById), new { id = room.RoomId }, room);
             }
             catch (Exception ex)
             {
@@ -123,7 +123,7 @@ namespace EvidenceRezervaceMistnosti.API
             }
         }
 
-        public bool RoomExists(int id) => _ctx.Room.Any(e => e.Id == id);
-        public Task<bool> RoomExistsAsync(int id) => _ctx.Room.AnyAsync(e => e.Id == id);
+        public bool RoomExists(int id) => _ctx.Room.Any(e => e.RoomId == id);
+        public Task<bool> RoomExistsAsync(int id) => _ctx.Room.AnyAsync(e => e.RoomId == id);
     }
 }

@@ -3,6 +3,41 @@
   "WorkspaceRootPath": "C:\\Projects\\EvidenceRezervaceMistnosti\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\evidencerezervacemistnosti.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\evidencerezervacemistnosti.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\evidencerezervacemistnosti.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\evidencerezervacemistnosti.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\reservationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\reservationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\api\\roomapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\api\\roomapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,52 +46,28 @@
       "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\dto\\roomdtorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\shared\\detailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\shared\\detailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\roomequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\roomequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\reservationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\reservationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\models\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\models\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|c:\\projects\\evidencerezervacemistnosti\\evidencerezervacemistnosti\\wwwroot\\scss\\custom-bootstrap.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
+      "RelativeMoniker": "D:0:0:{8BBFE4C6-BFA1-11B2-B42E-99D432426BF9}|EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj|solutionrelative:evidencerezervacemistnosti\\wwwroot\\scss\\custom-bootstrap.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,176 +77,229 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RoomDTORequest.cs",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T18:43:28.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T17:54:40.167Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-07-22T12:10:18.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-22T12:04:20.205Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\Error.cshtml",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\Shared\\Error.cshtml",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\Error.cshtml",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\Shared\\Error.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-22T12:02:47.188Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-22T12:02:46.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-22T12:02:13.98Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-22T12:00:31.248Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-22T12:00:25.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ReservationContext.cs",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T11:57:17.948Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Program.cs",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Program.cs",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Program.cs",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T11:51:36.485Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RoomApiController.cs",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T11:49:56.658Z",
+              "DocumentIndex": 15,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-07-24T12:54:12.423Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Reservation.cs",
-              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Reservation.cs",
-              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\Reservation.cs",
-              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Reservation.cs",
-              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\Reservation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T11:45:10.453Z"
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAqwEEAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-24T12:28:40.602Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EvidenceRezervaceMistnosti",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj*",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-24T14:51:51.182Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAAAVAAAAAAAAAAAswBUVAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-07-24T14:47:50.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EvidenceRezervaceMistnosti",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-24T14:45:16.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RoomDTORequest.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\DTO\\RoomDTORequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:23:29.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RoomApiController.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\API\\RoomApiController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAEwEoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:23:21.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DetailViewModel.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Shared\\DetailViewModel.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\Shared\\DetailViewModel.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Shared\\DetailViewModel.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\Shared\\DetailViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:17:52.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReservationContext.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\ReservationContext.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAuwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:16:38.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Room.cs",
               "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Room.cs",
               "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\Room.cs",
               "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Room.cs",
               "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\Room.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAqwAgAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T11:43:45.908Z"
+              "WhenOpened": "2026-07-24T14:14:05.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-24T13:40:49.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RoomEquipment.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\RoomEquipment.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\RoomEquipment.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\RoomEquipment.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\RoomEquipment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:15:31.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Location.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Location.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\Location.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Location.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\Location.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:13:31.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Program.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Program.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Program.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Program.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAqwI8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T12:59:27.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Equipment.cs",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Equipment.cs",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\Models\\Equipment.cs",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\Models\\Equipment.cs",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\Models\\Equipment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T14:14:35.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAGEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-24T12:28:19.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "custom-bootstrap.scss",
+              "DocumentMoniker": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\scss\\custom-bootstrap.scss",
+              "RelativeDocumentMoniker": "EvidenceRezervaceMistnosti\\wwwroot\\scss\\custom-bootstrap.scss",
+              "ToolTip": "C:\\Projects\\EvidenceRezervaceMistnosti\\EvidenceRezervaceMistnosti\\wwwroot\\scss\\custom-bootstrap.scss",
+              "RelativeToolTip": "EvidenceRezervaceMistnosti\\wwwroot\\scss\\custom-bootstrap.scss",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
+              "WhenOpened": "2026-07-24T11:46:38.189Z",
+              "EditorCaption": ""
             }
           ]
         }
