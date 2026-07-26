@@ -1,0 +1,213 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+.header {
+    color: #26352d;
+    font-weight: 600;
+}
+
+.page-container {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    background-color: #f4f6f5;
+}
+
+.reservation-container {
+    display:flex;
+    flex-flow: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+/* Levý panel */
+
+.filter-sidebar {
+    background-color: #f8faf9;
+    border-right: 1px solid #dfe7e2;
+    padding: 24px;
+}
+
+.sidebar-header {
+    margin-bottom: 24px;
+}
+
+    .sidebar-header h5 {
+        color: #26352d;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .sidebar-header p {
+        color: #6c757d;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+.filter-section {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #d8e5dd;
+}
+
+.filter-header {
+    color: #198754;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.form-label {
+    color: #495057;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 6px;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #75b798;
+        box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+    }
+
+/* Hlavní obsah */
+
+.main-content {
+    padding: 24px;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.search-container {
+    max-width: 100%;
+}
+
+/* Záložky */
+
+.detail-tab {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    color: #52605a;
+    background-color: #f1f3f2;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+    .detail-tab:hover {
+        color: #198754;
+        background-color: #e9f3ed;
+    }
+
+    .detail-tab.active {
+        color: white;
+        background-color: #198754;
+        border-color: #198754;
+    }
+
+/* Detail dashboardu */
+
+.detail-container {
+    background-color: #f8faf9;
+    border: 1px solid #e1e7e3;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+    .detail-container h4 {
+        color: #26352d;
+        font-weight: 600;
+    }
+
+.detail-card {
+    background-color: white;
+    border: 1px solid #e0e5e2;
+    border-left: 4px solid #198754;
+    border-radius: 7px;
+    padding: 18px;
+    margin-bottom: 12px;
+    transition: 0.2s;
+}
+
+    .reservation-card:hover {
+        border-color: #9fc9b1;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .reservation-card:last-child {
+        margin-bottom: 0;
+    }
+
+.reservation-title {
+    color: #26352d;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.reservation-location {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.detail-label {
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.detail-overflow {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    flex-grow: 1;
+    height: 100%;
+    min-height: 0;
+}
+
+/* Responzivní úpravy */
+
+@media (max-width: 767px) {
+    .reservation-container {
+        min-height: auto;
+    }
+
+    .filter-sidebar {
+        border-right: 0;
+        border-bottom: 1px solid #dfe7e2;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .detail-container {
+        padding: 15px;
+    }
+}
+

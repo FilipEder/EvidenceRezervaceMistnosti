@@ -1,0 +1,35 @@
+﻿@using EvidenceRezervaceMistnosti.DTO.PartialView;
+@model List<RoomRowDTO>
+
+
+@foreach (RoomRowDTO detail in Model)
+{
+    <div class="detail-card">
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <h5 class="reservation-title">Název místnosti: @detail.RoomName</h5>
+                <p class="reservation-location mb-0">
+                    Kapacita @detail.Capacity @(detail.Capacity == 1 ? "osoba" : "osob")
+                </p>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 mt-3 mt-lg-0">
+                <span class="detail-label">Název lokace</span>
+                <strong class="d-block">@detail.LocationName</strong>
+            </div>
+
+            <div class="col-sm-6 col-lg-2 mt-3 mt-lg-0">
+                <span class="badge bg-warning-subtle text-success">
+                    @detail.EquipmentText
+                </span>
+            </div>
+
+            <div class="col-lg-2 mt-3 mt-lg-0 text-lg-end">
+                <button class="btn btn-sm btn-outline-success" type="button">
+                    Detail
+                </button>
+            </div>
+        </div>
+    </div>
+}
+

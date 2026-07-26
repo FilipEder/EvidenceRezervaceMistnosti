@@ -176,14 +176,16 @@ namespace EvidenceRezervaceMistnosti
                     }
                 );
 
-                db.Reservation.AddRange(
+                for(int i = 1; i < 20; i++)
+                {
+                    db.Reservation.Add(
                     new Reservation
                     {
-                        ReservationId = 1,
+                        ReservationId = i,
                         Email = "JanNovak@gmail.com",
-                        DateReservation = DateOnly.FromDateTime(DateTime.Now.AddDays(-1)),
-                        TimeFrom = TimeOnly.FromDateTime(DateTime.Now.AddDays(-1)),
-                        TimeTo = TimeOnly.FromDateTime(DateTime.Now.AddDays(-1).Add(TimeSpan.FromHours(2))),
+                        DateReservation = DateOnly.FromDateTime(DateTime.Now.AddDays(-i)),
+                        TimeFrom = TimeOnly.FromDateTime(DateTime.Now.AddDays(-i)),
+                        TimeTo = TimeOnly.FromDateTime(DateTime.Now.AddDays(-i).Add(TimeSpan.FromHours(i))),
                         RoomId = 1,
                         NumberOfPeople = 3,
                         Description = "Rezervace pro prezentaci mé práce",
@@ -191,7 +193,8 @@ namespace EvidenceRezervaceMistnosti
                         Name = "Jan",
                         IsActive = true
                     }
-                );
+                    );
+                }
                 db.SaveChanges();
             }
 

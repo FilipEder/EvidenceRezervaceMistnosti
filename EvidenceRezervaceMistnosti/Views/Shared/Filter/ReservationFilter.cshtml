@@ -1,0 +1,46 @@
+﻿<!-- Počet lidí -->
+<div class="filter-section" id="CapacityFilter">
+    <div class="filter-header">
+        Počet lidí
+    </div>
+    <div class="row g-2">
+        <div class="col-12">
+            <input id="NumberOfPeople"
+                   name="NumberOfPeople"
+                   class="form-control"
+                   type="number"
+                   min="1"
+                   placeholder="1">
+        </div>
+    </div>
+</div>
+
+<!-- Datum a čas -->
+<div class="filter-section" id="DateFilter">
+    <div class="filter-header">
+        Datum a čas
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" for="ReservationDate">Den</label>
+        <input id="ReservationDate"
+               class="form-control"
+               type="date">
+    </div>
+
+    <div class="row g-2">
+        <div class="col-6">
+            <label class="form-label" for="TimeFrom">Od</label>
+            <input id="TimeFrom"
+                   class="form-control"
+                   type="time">
+        </div>
+
+        <div class="col-6">
+            <label class="form-label" for="TimeTo">Do</label>
+            <input id="TimeTo"
+                   class="form-control"
+                   type="time">
+        </div>
+    </div>
+</div>

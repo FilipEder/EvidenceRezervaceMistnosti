@@ -1,0 +1,37 @@
+﻿@using EvidenceRezervaceMistnosti.Models.Shared
+@model CstmErrorViewModel
+
+<link rel="stylesheet" href="~/css/cstmError.cs"/>
+<div class="error-page min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="error-card mx-auto text-center">
+            <div class="error-icon mb-4">
+                !
+            </div>
+            <p class="error-label mb-2">
+                Došlo k chybě
+            </p>
+
+            <h1 class="error-title mb-3">
+                @Model.Title
+            </h1>
+
+            <p class="error-description mb-4">
+                @Model.Description
+            </p>
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="btn btn-success px-4">
+                    Zpět na hlavní stránku
+                </a>
+                <button type="button"
+                        class="btn btn-outline-secondary px-4"
+                        onclick="history.back()">
+                    Přejít zpět
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

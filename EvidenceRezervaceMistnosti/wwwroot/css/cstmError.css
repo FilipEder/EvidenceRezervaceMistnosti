@@ -1,0 +1,86 @@
+﻿body {
+    background-color: #f4f6f5;
+    
+}
+
+.error-page {
+    background-color: #f4f6f5;
+    padding: 24px;
+}
+
+.error-card {
+    max-width: 650px;
+    background-color: #ffffff;
+    border: 1px solid #e0e6e2;
+    border-radius: 12px;
+    padding: 48px 36px;
+    box-shadow: 0 8px 25px rgba(38, 53, 45, 0.07);
+}
+
+.error-icon {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #198754;
+    background-color: #e9f5ee;
+    border: 2px solid #b9ddc7;
+    border-radius: 50%;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.error-label {
+    color: #198754;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.error-title {
+    color: #26352d;
+    font-size: 34px;
+    font-weight: 600;
+}
+
+.error-description {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #6c757d;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.error-card .btn {
+    min-width: 180px;
+    border-radius: 6px;
+}
+
+.error-card .btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+    .error-card .btn-success:hover {
+        background-color: #157347;
+        border-color: #146c43;
+    }
+
+@media (max-width: 576px) {
+    .error-card {
+        padding: 36px 20px;
+    }
+
+    .error-title {
+        font-size: 27px;
+    }
+
+    .error-description {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,61 @@
+﻿<!-- Kapacita -->
+<div class="filter-section" id="CapacityFilter">
+    <div class="filter-header">
+        Kapacita
+    </div>
+    <div class="row g-2">
+        <div class="col-6">
+            <label class="form-label" for="CapacityFrom">Od</label>
+            <input id="CapacityFrom"
+                   class="form-control"
+                   type="number"
+                   min="1"
+                   placeholder="1">
+        </div>
+        <div class="col-6">
+            <label class="form-label" for="CapacityTo">Do</label>
+            <input id="CapacityTo"
+                   class="form-control"
+                   type="number"
+                   min="1"
+                   placeholder="20">
+        </div>
+    </div>
+</div>
+<!-- Umístění -->
+<div class="filter-section" id="LocationFilter">
+    <div class="filter-header">
+        Umístění
+    </div>
+
+    <label class="form-label" for="LocationSelect">Patro</label>
+
+    <select id="LocationSelect" class="form-select">
+        <option value="" selected>Všechna patra</option>
+        <option value="1">1. patro</option>
+        <option value="2">2. patro</option>
+        <option value="3">3. patro</option>
+        <option value="4">4. patro</option>
+        <option value="5">5. patro</option>
+        <option value="6">6. patro</option>
+    </select>
+</div>
+<!-- Vybavení -->
+<div class="filter-section" id="EquipmentFilter">
+    <div class="filter-header">
+        Vybavení
+    </div>
+
+    <label class="form-label" for="EquipmentSelect">
+        Typ vybavení
+    </label>
+
+    <select id="EquipmentSelect" class="form-select">
+        <option value="" selected>Veškeré vybavení</option>
+        <option value="projector">Projektor</option>
+        <option value="television">Televize</option>
+        <option value="whiteboard">Tabule</option>
+        <option value="videocall">Videokonference</option>
+        <option value="aircondition">Klimatizace</option>
+    </select>
+</div>

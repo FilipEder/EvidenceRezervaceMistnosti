@@ -1,99 +1,94 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using EvidenceRezervaceMistnosti.Models.Shared;
+@{
+    ViewData["Title"] = "Evidence rezervací zasedacích místností";
 }
+@model HomepageViewModel
 
-<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-    <h2 class="mb-3 header">Evidence rezervací zasedacích místností</h2>
-    <div class="container reservation-container">
-        <div class="row h-100">
-            <div class="col-2 rightBorder">
-                @* Kapacita Filtrace místnosti*@
-                <div class="row bottomBorderGreen filterContainer mt-1" id="CapacityFilter">
-                    <div class="filterHeader">
-                        <p>Kapacita</p>
+<link rel="stylesheet" href="~/css/homepage.css"/>
+<div class="page-container py-4">
+
+    <h2 class="header mb-4 text-center">
+        Evidence rezervací zasedacích místností
+    </h2>
+
+    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
+        <div class="row g-0 h-100">
+            <!-- Levý panel s filtry -->
+            <aside class="d-flex flex-column justify-content-between col-12 col-md-4 col-lg-3 filter-sidebar">
+                <div class="fillter-upper-side">
+                    <div class="sidebar-header">
+                        <h5>Filtrování místností</h5>
                     </div>
-                    <div class="filterInputContainer">
-                        <p>Od</p>
-                        <input class="form-control" type="number"/>
-                    </div>
-                    <div class="filterInputContainer">
-                        <p>Do</p>
-                        <input class="form-control" type="number"/>
+
+                    <!--Filtry dle záložky-->
+                    @if (Model.ReservationOn)
+                    {
+                        @await Html.PartialAsync("~/Views/Shared/Filter/ReservationFilter.cshtml")
+                    }
+                    else
+                    {
+                        @await Html.PartialAsync("~/Views/Shared/Filter/RoomFilter.cshtml")
+                    }
+                </div>
+                <div class="filter-bottom-side">
+                    <!-- Tlačítka -->
+                    <div class="d-grid gap-2 mt-3 filter-buttons">
+                        <button class="btn btn-success" type="button">
+                            Použít filtry
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button">
+                            Vymazat filtry
+                        </button>
                     </div>
                 </div>
-                @* Datum Filtrace pro místnosti*@
-                <div class="row bottomBorderGreen filterContainer mt-1" id="DateFilter">
-                    <div class="filterHeader">
-                        <p>Datum</p>
+            </aside>
+
+            <!-- Pravá část -->
+            <main class="col-12 col-md-8 col-lg-9 main-content">
+
+                <!-- Vyhledávání -->
+                <div class="search-container mb-3">
+                    <label class="form-label" for="RoomSearch">
+                        Vyhledávání
+                    </label>
+
+                    <input id="RoomSearch"
+                           class="form-control"
+                           name="text"
+                           placeholder="Vyhledejte místnost, vybavení nebo patro..."
+                           type="search">
+                </div>
+
+                <!-- Přepínání záložek -->
+                <div class="row g-2 mb-4">
+                    <div class="col-6">
+                        <a asp-controller="Home"
+                           asp-action="Index"
+                           asp-route-reservation="true"
+                            class="detail-tab @(Model.ReservationOn ? "active" : "")">
+                            Rezervace
+                        </a>
                     </div>
-                    <div class="filterInputContainer">
-                        <p>Den</p>
-                        <input class="form-control" type="date" />
-                    </div>
-                    <div class="filterInputContainer">
-                        <p>Od</p>
-                        <input class="form-control" type="time" />
-                    </div>
-                    <div class="filterInputContainer">
-                        <p>Do</p>
-                        <input class="form-control" type="time" />
+
+                    <div class="col-6">
+                        <a asp-controller="Home"
+                           asp-action="Index"
+                           asp-route-reservation="false"
+                           class="detail-tab @(!Model.ReservationOn ? "active" : "")">
+                            Místnosti
+                        </a>
                     </div>
                 </div>
-                @* Filtrace umístění pro místnosti*@
-                <div class="row bottomBorderGreen filterContainer mt-1" id="DateFilter">
-                    <div class="filterHeader">
-                        <p>Umístění</p>
-                    </div>
-                    <div class="filterInputContainer">
-                        <select class="form-select filterSelect" aria-label="Floating label select example">
-                            <option selected>----</option>
-                            <option value="1">1.patro</option>
-                            <option value="2">2.patro</option>
-                            <option value="3">3.patro</option>
-                            <option value="4">4.patro</option>
-                            <option value="5">5.patro</option>
-                            <option value="6">6.patro</option>
-                        </select>
-                    </div>
-                </div>
-                @* Filtrace vybavení pro místnosti*@
-                <div class="row bottomBorderGreen filterContainer mt-1" id="DateFilter">
-                    <div class="filterHeader">
-                        <p>Vybavení</p>
-                    </div>
-                    <div class="filterInputContainer">
-                        <select class="form-select filterSelect" aria-label="Floating label select example">
-                            <option selected>----</option>
-                            <option value="1">1.patro</option>
-                            <option value="2">2.patro</option>
-                            <option value="3">3.patro</option>
-                            <option value="4">4.patro</option>
-                            <option value="5">5.patro</option>
-                            <option value="6">6.patro</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col-12 mt-2">
-                        <input class="form-control" name="text" placeholder="Vyhledej vybavení či umístění..." type="search">
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-6 primaryDetailContainer selected">
-                        <a class="primaryDetailLink" href="">Rezervace</a>
-                    </div>
-                    <div class="col-6 primaryDetailContainer">
-                        <a class="primaryDetailLink" href="">Mistnosti</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col detailContainer">
-                        
-                    </div>
-                </div>
-            </div>
+                <!-- Obsah -->
+                @if (Model.ReservationOn) 
+                {
+                    @await Html.PartialAsync("~/Views/Shared/Detail/ReservationDashboard.cshtml", Model.ReservationDashboard)
+                }
+                else 
+                {
+                    @await Html.PartialAsync("~/Views/Shared/Detail/RoomDashboard.cshtml", Model.RoomDashboard)
+                }
+            </main>
         </div>
     </div>
 </div>
