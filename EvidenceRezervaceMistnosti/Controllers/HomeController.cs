@@ -1,4 +1,5 @@
 using EvidenceRezervaceMistnosti.DTO.PartialView;
+using EvidenceRezervaceMistnosti.DTO.Select;
 using EvidenceRezervaceMistnosti.Models;
 using EvidenceRezervaceMistnosti.Models.Filter;
 using EvidenceRezervaceMistnosti.Models.Shared;
@@ -19,7 +20,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
             _ctx = ctx;
         }
         public async Task<IActionResult> Index(string? search, RoomFilterModel roomFilter, 
-            ReservationFilterModel reservationModel,  bool reservation = true)
+            ReservationFilterModel reservationFilter,  bool reservation = true)
         {
             try
             {
@@ -52,7 +53,9 @@ namespace EvidenceRezervaceMistnosti.Controllers
                 }
                 else
                 {
-                    List<RoomRowDTO> roomRows = await _ctx.Room
+                    model.RoomDashboard = new RoomDashboardDTO
+                    {
+                        RoomRows = await _ctx.Room
                         .Include(e => e.Location)
                         .Where(e => e.IsActive)
                         .Select(e => new RoomRowDTO
@@ -61,10 +64,28 @@ namespace EvidenceRezervaceMistnosti.Controllers
                             Capacity = e.Capacity,
                             LocationName = e.Location.Name,
                             EquipmentText = string.Join(",", e.RoomEquipment.Select(e => e.Equipment.Name))
-                        }).ToListAsync();
-                    model.RoomDashboard = new RoomDashboardDTO
+                        }).ToListAsync(),
+                    };
+
+                    model.RoomSelectValues = new()
                     {
-                        RoomRows = roomRows
+                        Equipments = await _ctx.Equipment
+                        .AsNoTracking()
+                        .Where(e => e.IsActive)
+                        .Select(e => new EquipmentSelectDTO
+                        {
+                            EquipmentName = e.Name,
+                            EquipmentId = e.EquipmentId
+                        }).ToListAsync(),
+
+                        Locations = await _ctx.Location
+                        .AsNoTracking()
+                        .Where(e => e.IsActive)
+                        .Select(e => new LocationSelectDTO
+                        {
+                            LocationName = e.Name,
+                            LocationId = e.LocationId
+                        }).ToListAsync()
                     };
                 }
 

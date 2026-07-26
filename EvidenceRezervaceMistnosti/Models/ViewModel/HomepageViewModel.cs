@@ -7,5 +7,6 @@ namespace EvidenceRezervaceMistnosti.Models.Shared
         public bool ReservationOn { get; set; }
         public ReservationDashboardDTO? ReservationDashboard { get; set; }
         public RoomDashboardDTO? RoomDashboard { get; set; }
+        public RoomFilterDTO? RoomSelectValues { get; set; }
     }
 }

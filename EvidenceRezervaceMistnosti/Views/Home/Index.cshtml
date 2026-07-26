@@ -27,16 +27,16 @@
                     }
                     else
                     {
-                        @await Html.PartialAsync("~/Views/Shared/Filter/RoomFilter.cshtml")
+                        @await Html.PartialAsync("~/Views/Shared/Filter/RoomFilter.cshtml", Model.RoomSelectValues)
                     }
                 </div>
                 <div class="filter-bottom-side">
                     <!-- Tlačítka -->
                     <div class="d-grid gap-2 mt-3 filter-buttons">
-                        <button class="btn btn-success" type="button">
+                        <button id="filterButton" class="btn btn-success" type="button">
                             Použít filtry
                         </button>
-                        <button class="btn btn-outline-secondary" type="button">
+                        <button id="clearFilterButton" class="btn btn-outline-secondary" type="button">
                             Vymazat filtry
                         </button>
                     </div>
@@ -48,17 +48,15 @@
 
                 <!-- Vyhledávání -->
                 <div class="search-container mb-3">
-                    <label class="form-label" for="RoomSearch">
+                    <label class="form-label" for="searchInput">
                         Vyhledávání
                     </label>
-
-                    <input id="RoomSearch"
+                    <input id="searchInput"
                            class="form-control"
                            name="text"
                            placeholder="Vyhledejte místnost, vybavení nebo patro..."
                            type="search">
                 </div>
-
                 <!-- Přepínání záložek -->
                 <div class="row g-2 mb-4">
                     <div class="col-6">
