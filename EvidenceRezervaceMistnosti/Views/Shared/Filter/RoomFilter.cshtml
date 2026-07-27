@@ -2,6 +2,18 @@
 
 @model RoomFilterDTO
 
+<!-- Vyhledávání -->
+<div class="search-container mb-3">
+    <label class="form-label" for="searchInput">
+        Vyhledávání
+    </label>
+    <input id="searchInput"
+           class="form-control"
+           name="search"
+           value=""
+           placeholder="Vyhledejte místnost, vybavení nebo patro..."
+           type="search">
+</div>
 <!-- Kapacita -->
 <div class="filter-section" id="CapacityFilter">
     <div class="filter-header">
@@ -13,6 +25,7 @@
             <input id="CapacityFromInput"
                    class="form-control"
                    type="number"
+                   name="roomFilter.CapacityFrom"
                    min="1"
                    placeholder="1">
         </div>
@@ -21,6 +34,7 @@
             <input id="CapacityToInput"
                    class="form-control"
                    type="number"
+                   name="roomFilter.CapacityTo"
                    min="1"
                    placeholder="20">
         </div>
@@ -33,8 +47,7 @@
     </div>
 
     <label class="form-label" for="LocationSelect">Patro</label>
-
-    <select id="LocationSelect" class="form-select">
+    <select id="LocationSelect" class="form-select" name="roomFilter.LocationId">
         @if (Model.Locations == null || !Model.Locations.Any())
         {
             <option value="" disabled>Žádná patra k dispozici</option>
@@ -59,7 +72,7 @@
         Typ vybavení
     </label>
 
-    <select id="EquipmentSelect" class="form-select">
+    <select id="EquipmentSelect" class="form-select" name="EquipmentId">
         @if (Model.Equipments == null || !Model.Equipments.Any())
         {
             <option value="" disabled>Žádné vybavení k dispozici</option>

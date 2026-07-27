@@ -1,0 +1,80 @@
+﻿@using EvidenceRezervaceMistnosti.Models.ViewModel;
+
+@{
+    ViewData["Title"] = "Dashboard místností";
+}
+
+@model DashboardRoomViewModel
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<div class="page-container py-4">
+
+    <h2 class="header mb-4 text-center">
+        Evidence rezervací zasedacích místností
+    </h2>
+    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
+        <div class="row g-0 h-100">
+            <!-- Levý panel s filtry -->
+            <aside class="d-flex flex-column justify-content-between col-12 col-md-4 col-lg-3 filter-sidebar">
+                <form asp-controller="Dashboard"
+                      asp-action="Room"
+                      method="get">
+                    <div class="fillter-upper-side">
+                        <div class="sidebar-header">
+                            <h5>Filtrování místností</h5>
+                        </div>
+                        <!-- Vyhledávání -->
+                        <div class="search-container mb-3">
+                            <label class="form-label" for="searchInput">
+                                Vyhledávání
+                            </label>
+                            <input id="searchInput"
+                                   class="form-control"
+                                   name="search"
+                                   placeholder="Vyhledejte místnost, vybavení nebo patro..."
+                                   type="search">
+                        </div>
+                        <!--Filtry-->
+                        @await Html.PartialAsync("~/Views/Shared/Filter/RoomFilter.cshtml", Model.RoomSelectValues)
+                    </div>
+                    <div class="filter-bottom-side">
+                        <!-- Tlačítka -->
+                        <div class="d-grid gap-2 mt-3 filter-buttons">
+                            <button id="filterButton" class="btn btn-success" type="submit">
+                                Použít filtry
+                            </button>
+                            <button id="clearFilterButton" class="btn btn-outline-secondary" type="button">
+                                Vymazat filtry
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </aside>
+
+            <!-- Pravá část -->
+            <main class="col-12 col-md-8 col-lg-9 main-content">
+                <!-- Přepínání záložek -->
+                <div class="row g-2 mb-4">
+                    <div class="col-6">
+                        <a asp-controller="Dashboard"
+                           asp-action="Reservation"
+                           asp-route-reservation="true"
+                           class="detail-tab">
+                            Rezervace
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a asp-controller="Dashboard"
+                           asp-action="Room"
+                           asp-route-reservation="false"
+                           class="detail-tab active">
+                            Místnosti
+                        </a>
+                    </div>
+                </div>
+                <!-- Obsah -->
+                @await Html.PartialAsync("~/Views/Shared/Detail/RoomDashboard.cshtml", Model.RoomDashboard)
+            </main>
+        </div>
+    </div>
+</div>
