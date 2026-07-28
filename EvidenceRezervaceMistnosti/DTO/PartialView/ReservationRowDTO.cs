@@ -2,6 +2,7 @@
 {
     public class ReservationRowDTO
     {
+        public int ReservationId { get; set; }
         public required string ReservatioName { get; set; }
         public required string RoomName { get; set; }
         public required string UserName { get; set; }

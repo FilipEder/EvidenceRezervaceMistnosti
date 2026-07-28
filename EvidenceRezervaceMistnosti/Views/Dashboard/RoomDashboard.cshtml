@@ -1,0 +1,172 @@
+﻿@using EvidenceRezervaceMistnosti.Models.ViewModel;
+
+@{
+    ViewData["Title"] = "Dashboard místností";
+}
+
+@model RoomDashboardViewModel
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<div class="page-container py-4">
+
+    <h2 class="header mb-4 text-center">
+        Evidence rezervací zasedacích místností
+    </h2>
+    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
+        <div class="row g-0 h-100">
+            <!-- Levý panel s filtry -->
+            <aside class="d-flex flex-column justify-content-between col-12 col-md-4 col-lg-3 filter-sidebar">
+                <form asp-controller="Dashboard"
+                      asp-action="Room"
+                      method="get">
+                    <div class="fillter-upper-side">
+                        <div class="sidebar-header">
+                            <h5>Filtrování místností</h5>
+                        </div>
+                        <!--Filtry-->
+                        <!-- Vyhledávání -->
+                        <div class="search-container mb-3">
+                            <label class="form-label" for="searchInput">
+                                Vyhledávání
+                            </label>
+                            <input id="searchInput"
+                                   class="form-control"
+                                   name="search"
+                                   value="@(Model.Search ?? "")"
+                                   placeholder="Vyhledejte místnost, vybavení nebo patro..."
+                                   type="search">
+                        </div>
+                        <!-- Kapacita -->
+                        <div class="filter-section" id="CapacityFilter">
+                            <div class="filter-header">
+                                Kapacita
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <label class="form-label" for="CapacityFromInput">Od</label>
+                                    <input id="CapacityFromInput"
+                                           class="form-control"
+                                           type="number"
+                                           name="roomFilter.CapacityFrom"
+                                           value="@(Model.CapacityFrom?.ToString() ?? "")"
+                                           min="1"
+                                           placeholder="1">
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label" for="CapacityToInput">Do</label>
+                                    <input id="CapacityToInput"
+                                           class="form-control"
+                                           type="number"
+                                           name="roomFilter.CapacityTo"
+                                           value="@(Model.CapacityTo?.ToString() ?? "")"
+                                           min="1"
+                                           placeholder="20">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Umístění -->
+                        <div class="filter-section" id="LocationFilter">
+                            <div class="filter-header">
+                                Umístění
+                            </div>
+
+                            <label class="form-label" for="LocationSelect">Patro</label>
+                            <select id="LocationSelect" class="form-select" name="roomFilter.LocationId">
+                                @if (Model.Locations == null || !Model.Locations.Any())
+                                {
+                                    <option value="" disabled>Žádná umístění k dispozici</option>
+                                }
+                                else
+                                {
+                                    <option value="" selected>Všechna umístění</option>
+                                    foreach (var floor in Model.Locations)
+                                    {
+                                        if (floor.LocationId == Model.LocationId)
+                                        {
+                                            <option value="@floor.LocationId" selected>
+                                                @floor.LocationName
+                                            </option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@floor.LocationId">
+                                                @floor.LocationName
+                                            </option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <!-- Vybavení -->
+                        <div class="filter-section" id="EquipmentFilter">
+                            <div class="filter-header">
+                                Vybavení
+                            </div>
+                            <label class="form-label" for="EquipmentSelect">
+                                Typ vybavení
+                            </label>
+                            <select id="EquipmentSelect" class="form-select" name="EquipmentId">
+                                @if (Model.Equipments == null || !Model.Equipments.Any())
+                                {
+                                    <option value="" disabled>Žádné vybavení k dispozici</option>
+                                }
+                                else
+                                {
+                                    <option value="" selected>Všechna vybavení</option>
+                                    foreach (var equipment in Model.Equipments)
+                                    {
+                                        if (equipment.EquipmentId == Model.EquipmentId)
+                                        {
+                                            <option value="@equipment.EquipmentId" selected>
+                                                @equipment.EquipmentName
+                                            </option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@equipment.EquipmentId">
+                                                @equipment.EquipmentName
+                                            </option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-bottom-side">
+                        <!-- Tlačítka -->
+                        <div class="d-grid gap-2 mt-3 filter-buttons">
+                            <button id="filterButton" class="btn btn-success" type="submit">
+                                Použít filtry
+                            </button>
+                            <button id="clearFilterButton" class="btn btn-outline-secondary" type="button">
+                                Vymazat filtry
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </aside>
+
+            <!-- Pravá část -->
+            <main class="col-12 col-md-8 col-lg-9 main-content">
+                <!-- Přepínání záložek -->
+                <div class="row g-2 mb-4">
+                    <div class="col-6">
+                        <a asp-controller="Dashboard"
+                           asp-action="ReservationDashboard"
+                           class="detail-tab">
+                            Rezervace
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a 
+                           class="detail-tab active">
+                            Místnosti
+                        </a>
+                    </div>
+                </div>
+                <!-- Obsah -->
+                @await Html.PartialAsync("~/Views/Shared/Detail/RoomDashboard.cshtml", Model.RoomDashboard)
+            </main>
+        </div>
+    </div>
+</div>

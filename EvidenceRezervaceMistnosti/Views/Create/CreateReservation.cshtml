@@ -1,0 +1,129 @@
+﻿@using EvidenceRezervaceMistnosti.DTO.Form;
+
+@model ReservationFormDTO
+
+@{
+    ViewData["Title"] = "Vytvořit rezervaci";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/form.css" />
+<link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
+<link href="~/lib/toastify-js/toastify.min.css" rel="stylesheet" />
+<link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+<div class="page-container py-4">
+    <h2 class="header mb-4 text-center">
+        Evidence rezervací zasedacích místností
+    </h2>
+    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
+        <div class="row g-0 h-100">
+            <main class="col-12  main-content">
+                <div class="row g-2 mb-4">
+                    <div class="col-1">
+                        <a asp-controller="Dashboard"
+                           asp-action="ReservationDashboard"
+                           style="cursor: pointer"
+                           class="detail-tab">
+                            Zpět
+                        </a>
+                    </div>
+                </div>
+                <div class="detail-container">
+                    <form asp-controller="ReservationApi" asp-action="Post" method="post" novalidate>
+                        <div class="row mb-3">
+                            <p class="section-header">Osobní informace</p>
+                            @* Jmeno *@
+                            <div class="col-4">
+                                <label name="Name" class="form-label">Jméno</label>
+                                <input type="text" name="Name" 
+                                       maxlength="30" placeholder="Zadejte jméno"
+                                    class="form-control" />
+                            </div>
+                            @* Prijmeni *@
+                            <div class="col-4">
+                                <label name="LastName" class="form-label">Příjmení</label>
+                                <input type="text" name="LastName"
+                                    maxlength="30" placeholder="Zadejte příjmení"
+                                    class="form-control" />
+                            </div>
+                            @* Email *@
+                            <div class="col-4">
+                                <label name="Email" class="form-label">Email</label>
+                                <input type="email" name="Email" 
+                                    maxlength="320" placeholder="Zadejte email"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                        @* Room Information *@
+                        <div class="row mb-3">
+                            <p class="section-header">Informace o místnosti</p>
+                            @* Mistnost *@
+                            <div class="col-4">
+                                <label name="RoomId" class="form-label">Místnost</label>
+                                <select name="RoomId" name="RoomId" id="room-select" class="form-control">
+                                    <option value="">Vyberte místnost</option>
+                                    @if (Model.Rooms == null || !Model.Rooms.Any())
+                                    {
+                                        <option value="" disabled>Žádna místnost k dispozici</option>
+                                    }
+                                    else
+                                    {
+                                        foreach (var room in Model.Rooms)
+                                        {
+                                            <option value="@room.RoomId">
+                                                @room.RoomName | Kapacita: @room.Capacity
+                                            </option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            @* Pocet lidi *@
+                            <div class="col-4">
+                                <label for="NumberOfPeople" class="form-label">Počet lidí</label>
+                                <input type="number" id="NumberOfPeople" 
+                                    min="1" placeholder="Zadejte počet lidí"
+                                    name="NumberOfPeople" class="form-control" />
+                            </div>
+                        </div>
+                        @* Dates *@
+                       <div class="row mb-3">
+                            <p class="section-header">Datum</p>
+                            @* Den *@
+                            <div class="col-4">
+                                <label for="Day" class="form-label">Den</label>
+                                <input type="date" id="Day"
+                                       min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                       max="@DateTime.Today.AddYears(1).ToString("yyyy-MM-dd")"
+                                       name="Day" class="form-control" />
+                            </div>
+                            @* CasOd *@
+                            <div class="col-4">
+                                <label for="TimeFrom" class="form-label">Od</label>
+                                <input type="time" id="TimeFrom"
+                                       name="TimeFrom" class="form-control" />
+                            </div>
+                            @* CasDo *@
+                            <div class="col-4">
+                                <label for="TimeTo" class="form-label">Do</label>
+                                <input type="time" id="TimeTo" name="TimeTo" class="form-control" />
+                            </div>
+                       </div>
+                        @* Popis *@
+                        <div class="form-group mb-3">
+                            <label for="Description" class="form-label">Popis</label>
+                            <textarea id="Description" name="Description" 
+                                maxlength="500"
+                                class="form-control" placeholder="Zadejte popis"></textarea>
+                        </div>
+                        <button type="submit" class="btn button-submit">Vytvořit</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+<script src="~/lib/choices.js/choices.min.js"></script>
+<script src="~/lib/toastify-js/toastify.min.js"></script>
+<script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="~/js/form/ReservationForm.js"></script>

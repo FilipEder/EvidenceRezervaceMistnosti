@@ -12,7 +12,8 @@ namespace EvidenceRezervaceMistnosti.DTO.Requests
         [Required(ErrorMessage = "Kapacita místnosti je povinná")]
         [Range(1, 1000, ErrorMessage = "Kapacita musí být od 1 do 1000")]
         public required int Capacity { get; set; }
-        public int LocationId { get; set; }
-        public List<RoomEquipmentRequest>? GearIds { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Umístění místnosti je povinné")]
+        public required int LocationId { get; set; }
+        public List<int>? GearIds { get; set; }
     }
 }

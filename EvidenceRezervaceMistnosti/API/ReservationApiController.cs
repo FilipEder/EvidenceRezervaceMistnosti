@@ -142,7 +142,7 @@ namespace EvidenceRezervaceMistnosti.API
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(ReservationRequest request)
+        public async Task<ActionResult> Post([FromBody] ReservationRequest request)
         {
             await using var transaction = await _ctx.Database
                 .BeginTransactionAsync(System.Data.IsolationLevel.Serializable);

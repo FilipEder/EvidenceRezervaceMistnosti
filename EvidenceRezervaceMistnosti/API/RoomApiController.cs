@@ -119,7 +119,7 @@ namespace EvidenceRezervaceMistnosti.API
             }
         }
 
-        [HttpPost]
+        [HttpPost]  
         public async Task<ActionResult> Post([FromBody] RoomRequest request)
         {
             using var transaction = await _ctx.Database
@@ -166,8 +166,8 @@ namespace EvidenceRezervaceMistnosti.API
                         .Select(e => e.EquipmentId).ToArrayAsync();
 
                     int[] notMatchEquipId = request.GearIds
-                        .Where(e => !equip.Contains(e.GearId))
-                        .Select(e => e.GearId).ToArray();
+                        .Where(e => !equip.Contains(e))
+                        .Select(e => e).ToArray();
 
                     if(notMatchEquipId.Length > 0)
                     {
@@ -192,12 +192,12 @@ namespace EvidenceRezervaceMistnosti.API
                 };
 
                 _ctx.Room.Add(room);
+                await _ctx.SaveChangesAsync();
 
                 List<RoomEquipment> roomEquipment = request.GearIds?.Select(e => new RoomEquipment
                 {
-                    EquipmentId = e.GearId,
+                    EquipmentId = e,
                     RoomId = room.RoomId,
-                    Count = e.Count
                 }).ToList() ?? new List<RoomEquipment>();
 
                 _ctx.RoomEquipment.AddRange(roomEquipment);

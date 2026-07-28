@@ -1,0 +1,90 @@
+﻿@using EvidenceRezervaceMistnosti.DTO.Form;
+
+@model RoomFormDTO
+
+@{
+    ViewData["Title"] = "Vytvořit místnost";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/form.css" />
+<link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
+<link href="~/lib/toastify-js/toastify.min.css" rel="stylesheet" />
+<link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+<div class="page-container py-4">
+    <h2 class="header mb-4 text-center">
+        Evidence rezervací zasedacích místností
+    </h2>
+    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
+        <div class="row g-0 h-100">
+            <main class="col-12  main-content">
+                <div class="row g-2 mb-4">
+                    <div class="col-1">
+                        <a 
+                           asp-controller="Dashboard"
+                           asp-action="RoomDashboard" 
+                           style="cursor: pointer"
+                           class="detail-tab">
+                            Zpět
+                        </a>
+                    </div>
+                </div>
+                <div class="detail-container">
+                    <form asp-controller="RoomApi" asp-action="Post" method="post" novalidate>
+                        <div class="form-group mb-3">
+                            <label name="Name" class="form-label">Název místnosti</label>
+                            <input type="text" name="Name" maxlength="120" class="form-control" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="capacity-input" class="form-label">Kapacita</label>
+                            <input type="number" id="capacity-input" name="Capacity"  class="form-control" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label name="LocationId" class="form-label">Umístění</label>
+                            <select name="LocationId" id="location-select" class="form-control">
+                                <option value="">Vyberte umístění</option>
+                                @if (Model.LocationSelect == null || !Model.LocationSelect.Any())
+                                {
+                                    <option value="" disabled>Žádné umístění  k dispozici</option>
+                                }
+                                else
+                                {
+                                    foreach (var floor in Model.LocationSelect)
+                                    {
+                                        <option value="@floor.LocationId">
+                                            @floor.LocationName
+                                        </option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label name="GearIds" class="form-label">Vybavení</label>
+                            <select name="GearIds" class="form-control" id="gear-select" multiple>
+                                @if (Model.EquipmentSelect == null || !Model.EquipmentSelect.Any())
+                                {
+                                    <option value="" disabled>Žádné vybavení k dispozici</option>
+                                }
+                                else
+                                {
+                                    foreach (var equipment in Model.EquipmentSelect)
+                                    {
+                                        <option value="@equipment.EquipmentId">
+                                            @equipment.EquipmentName
+                                        </option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn button-submit">Vytvořit</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+<script src="~/lib/choices.js/choices.min.js"></script>
+<script src="~/lib/toastify-js/toastify.min.js"></script>
+<script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="~/js/form/RoomForm.js"></script>

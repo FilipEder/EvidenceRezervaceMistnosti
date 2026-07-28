@@ -1,0 +1,128 @@
+﻿@using EvidenceRezervaceMistnosti.Models.ViewModel;
+@{
+    ViewData["Title"] = "Dashboard rezervací";
+}
+
+@model ReservationDashboardViewModel
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<div class="page-container py-4">
+
+    <h2 class="header mb-4 text-center">
+        Evidence rezervací zasedacích místností
+    </h2>
+    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
+        <div class="row g-0 h-100">
+            <!-- Levý panel s filtry -->
+            <aside class="d-flex flex-column justify-content-between col-12 col-md-4 col-lg-3 filter-sidebar">
+                <form asp-controller="Dashboard"
+                      asp-action="Reservation"
+                      method="get">
+                    <div class="fillter-upper-side">
+                        <div class="sidebar-header">
+                            <h5>Filtrování místností</h5>
+                        </div>
+                        <!-- Vyhledávání -->
+                        <div class="search-container mb-3">
+                            <label class="form-label" for="searchInput">
+                                Vyhledávání
+                            </label>
+                            <input id="searchInput"
+                                   class="form-control"
+                                   name="search"
+                                   value="@(Model.Search ?? "")"
+                                   placeholder="Vyhledejte místnost, vybavení nebo patro..."
+                                   type="search">
+                        </div>
+                        <!-- Počet lidí -->
+                        <div class="filter-section" id="CapacityFilter">
+                            <div class="filter-header">
+                                Počet lidí
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <input id="NumberOfPeopleInput"
+                                           name="numberOfPeople"
+                                           class="form-control"
+                                           type="number"
+                                           value="@Model.NumberOfPeople"
+                                           min="1"
+                                           placeholder="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Datum a čas -->
+                        <div class="filter-section" id="DateFilter">
+                            <div class="filter-header">
+                                Datum a čas
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label" for="ReservationDateInput">Den</label>
+                                <input id="ReservationDateInput"
+                                       class="form-control"
+                                       value="@(Model.Day != null ? Model.Day.Value.ToString("yyyy-MM-dd") : "")"
+                                       name="day"
+                                       type="date">
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <label class="form-label" for="TimeFromInput">Od</label>
+                                    <input id="TimeFromInput"
+                                           class="form-control"
+                                           name="timeFrom"
+                                           value="@(Model.TimeFrom != null ? Model.TimeFrom.Value.ToString("HH:mm") : "")"
+                                           type="time">
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label" for="TimeToInput">Do</label>
+                                    <input id="TimeToInput"
+                                           class="form-control"
+                                           value="@(Model.TimeTo != null ? Model.TimeTo.Value.ToString("HH:mm") : "")"
+                                           name="timeTo"
+                                           type="time">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-bottom-side">
+                        <!-- Tlačítka -->
+                        <div class="d-grid gap-2 mt-3 filter-buttons">
+                            <button id="filterButton" class="btn btn-success" type="submit">
+                                Použít filtry
+                            </button>
+                            <button id="clearFilterButton" class="btn btn-outline-secondary" type="button">
+                                Vymazat filtry
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </aside>
+            <!-- Pravá část -->
+            <main class="col-12 col-md-8 col-lg-9 main-content">
+                <!-- Přepínání záložek -->
+                <div class="row g-2 mb-4">
+                    <div class="col-6">
+                        <a
+                           class="detail-tab active">
+                            Rezervace
+                        </a>
+                    </div>
+
+                    <div class="col-6">
+                        <a asp-controller="Dashboard"
+                           asp-action="RoomDashboard"
+                           class="detail-tab">
+                            Místnosti
+                        </a>
+                    </div>
+                </div>
+                <!-- Obsah -->
+                @await Html.PartialAsync("~/Views/Shared/Detail/ReservationDashboard.cshtml", Model.ReservationDashboard)
+            </main>
+        </div>
+    </div>
+</div>

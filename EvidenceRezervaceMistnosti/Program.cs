@@ -166,13 +166,11 @@ namespace EvidenceRezervaceMistnosti
                     {
                         RoomId = 1,
                         EquipmentId = 3,
-                        Count = 10
                     },
                     new RoomEquipment
                     {
                         RoomId = 1,
                         EquipmentId = 4,
-                        Count = 10
                     }
                 );
 
@@ -195,14 +193,29 @@ namespace EvidenceRezervaceMistnosti
                     }
                     );
                 }
+
+                db.Reservation.Add(
+                   new Reservation
+                   {
+                       ReservationId = 20,
+                       Email = "JanNovak@gmail.com",
+                       DateReservation = DateOnly.FromDateTime(DateTime.Now.AddDays(-20)),
+                       TimeFrom = TimeOnly.FromDateTime(DateTime.Now.AddDays(-20)),
+                       TimeTo = TimeOnly.FromDateTime(DateTime.Now.AddDays(-20).Add(TimeSpan.FromHours(20))),
+                       RoomId = 1,
+                       NumberOfPeople = 3,
+                       Description = "Rezervace pro prezentaci mé práce",
+                       LastName = "Filip",
+                       Name = "Eder",
+                       IsActive = true
+                   }
+                   );
                 db.SaveChanges();
             }
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -212,11 +225,7 @@ namespace EvidenceRezervaceMistnosti
             app.UseAuthorization();
 
             app.MapStaticAssets();
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Dashboard}/{action=Reservation}")
-                .WithStaticAssets();
-
+            app.MapControllers().WithStaticAssets();
             app.Run();
         }
     }
