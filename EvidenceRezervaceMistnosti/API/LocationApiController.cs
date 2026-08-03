@@ -21,6 +21,7 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 List<LocationResponse> response = await _ctx.Location
+                    .AsNoTracking()
                     .Select(l => new LocationResponse
                     {
                         LocationId = l.LocationId,

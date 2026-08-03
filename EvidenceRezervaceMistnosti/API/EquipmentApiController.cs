@@ -25,6 +25,7 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 List<EquipmentResponse> response = await _ctx.Equipment
+                    .AsNoTracking()
                     .Where(e => e.IsActive)
                     .Select(e => new EquipmentResponse
                     {

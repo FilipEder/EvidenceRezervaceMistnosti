@@ -25,8 +25,8 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 List<Reservation>? reservations = await _ctx.Reservation
-                    .Include(r => r.Room)
                     .AsNoTracking()
+                    .Include(r => r.Room)
                     .Where(e => e.IsActive)
                     .ToListAsync();
 
@@ -90,8 +90,8 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 Reservation? reservation = await _ctx.Reservation
-                    .Include(e => e.Room)
                     .AsNoTracking()
+                    .Include(e => e.Room)
                     .FirstOrDefaultAsync(e => e.ReservationId == id && e.IsActive);
 
                 if (reservation == null)

@@ -110,6 +110,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
                     TimeTo = reservation.TimeTo,
                     Description = reservation.Description,
                     Rooms = await _ctx.Room
+                        .AsNoTracking()
                         .Select(r => new RoomSelectDTO
                         {
                             RoomId = r.RoomId,

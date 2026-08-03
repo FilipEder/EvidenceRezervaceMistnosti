@@ -27,8 +27,8 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 List<Room>? rooms = await _ctx.Room
-                    .Include(r => r.Location)
                     .AsNoTracking()
+                    .Include(r => r.Location)
                     .ToListAsync();
 
                 if (rooms == null)
@@ -76,8 +76,8 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 Room? room = await _ctx.Room
-                    .Include(e => e.Location)
                     .AsNoTracking()
+                    .Include(e => e.Location)
                     .FirstOrDefaultAsync(e => e.RoomId == id && e.IsActive);
 
                 if (room == null)
@@ -144,6 +144,7 @@ namespace EvidenceRezervaceMistnosti.API
 
                 // Check Location Validate
                 bool locationExist = await _ctx.Location
+                    .AsNoTracking()
                     .AnyAsync(l => l.LocationId == request.LocationId && l.IsActive);
 
                 if (!locationExist)
@@ -163,6 +164,7 @@ namespace EvidenceRezervaceMistnosti.API
                 if(request.GearIds != null)
                 {
                     int[] equip = await _ctx.Equipment
+                        .AsNoTracking()
                         .Select(e => e.EquipmentId).ToArrayAsync();
 
                     int[] notMatchEquipId = request.GearIds
@@ -228,6 +230,7 @@ namespace EvidenceRezervaceMistnosti.API
             try
             {
                 bool RoomExist = await _ctx.Room
+                    .AsNoTracking()
                     .AnyAsync(e => e.IsActive & e.RoomId == id);
 
                 if (!RoomExist)
@@ -243,8 +246,8 @@ namespace EvidenceRezervaceMistnosti.API
                 }
 
                 List<Reservation>? reservations = await _ctx.Reservation
-                    .Include(e => e.Room)
                     .AsNoTracking()
+                    .Include(e => e.Room)
                     .Where(e => e.RoomId == id)
                     .ToListAsync();
 

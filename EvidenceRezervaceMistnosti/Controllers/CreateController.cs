@@ -31,6 +31,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
                         EquipmentId = e.EquipmentId,
                         EquipmentName = e.Name,
                     }).ToListAsync(),
+
                     LocationSelect = await _ctx.Location
                     .AsNoTracking()
                     .Select(e => new LocationSelectDTO
