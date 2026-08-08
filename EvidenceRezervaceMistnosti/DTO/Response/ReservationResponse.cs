@@ -8,7 +8,7 @@ namespace EvidenceRezervaceMistnosti.DTO.Response
         public required string ReservationName { get; set; }
         public required string LastName { get; set; }
         public required string Email { get; set; }
-        public required string DateReservation { get; set; }
+        public DateOnly DateReservation { get; set; }
         public required string TimeFrom { get; set; }
         public required string TimeTo { get; set; }
         public int NumberOfPeople { get; set; }

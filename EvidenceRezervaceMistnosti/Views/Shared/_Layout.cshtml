@@ -1,16 +1,81 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.Extensions.Localization;
+
+@using System.Globalization;
+
+@inject IStringLocalizer<Trans> Localizer;
+
+@{
+    var currentCulture = CultureInfo.CurrentUICulture.Name;
+    var returnUrl = $"{Context.Request.Path}{Context.Request.QueryString}";
+    var languages = new[]
+    {
+        new { Culture = "cs-CZ", Flag = "cz", Code = "CS", Name = Localizer["Czech"].Value },
+        new { Culture = "de-DE", Flag = "de", Code = "DE", Name = Localizer["German"].Value },
+        new { Culture = "en-US", Flag = "gb", Code = "EN", Name = Localizer["English"].Value }
+    };
+    var currentLanguage = languages.FirstOrDefault(language => language.Culture == currentCulture)
+        ?? languages[0];
+}
+
+<!DOCTYPE html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evidence Rezervace Mistnosti</title>
+    <title>
+        @Localizer["Room Reservation Records"]</title>
     <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico">
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/scss/custom-bootstrap.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/flag-icons/css/flag-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/custom-bootstrap.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EvidenceRezervaceMistnosti.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Style", required: false)
 </head>
 <body>
+    <header class="app-language-bar">
+        <div class="container-fluid d-flex justify-content-end align-items-center h-100">
+            <nav class="language-switcher" aria-label="@Localizer["Change language"]">
+                <form asp-controller="Localization"
+                      asp-action="SetLanguage"
+                      method="post"
+                      class="language-switcher-form">
+                    <input type="hidden" name="returnUrl" value="@returnUrl" />
+                    <div class="dropdown">
+                        <button type="button"
+                                id="languageMenuButton"
+                                class="language-menu-toggle dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-label="@Localizer["Change language"]: @currentLanguage.Name">
+                            <span class="fi fi-@currentLanguage.Flag language-flag" aria-hidden="true"></span>
+                            <span class="language-code">@currentLanguage.Code</span>
+                            <span class="language-name">@currentLanguage.Name</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end language-menu"
+                            aria-labelledby="languageMenuButton">
+                            @foreach (var language in languages)
+                            {
+                                var isActive = language.Culture == currentCulture;
+                                <li>
+                                    <button type="submit"
+                                            name="culture"
+                                            value="@language.Culture"
+                                            class="dropdown-item language-option @(isActive ? "active" : null)"
+                                            aria-current="@(isActive ? "true" : null)">
+                                        <span class="fi fi-@language.Flag language-flag" aria-hidden="true"></span>
+                                        <span class="language-option-name">@language.Name</span>
+                                        <span class="language-option-code">@language.Code</span>
+                                    </button>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </form>
+            </nav>
+        </div>
+    </header>
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

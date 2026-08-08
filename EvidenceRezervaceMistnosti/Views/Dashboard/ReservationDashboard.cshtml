@@ -1,43 +1,82 @@
 ﻿@using EvidenceRezervaceMistnosti.Models.ViewModel;
+@using Microsoft.Extensions.Localization;
+
+@inject IStringLocalizer<Trans> Localizer;
+
 @{
     ViewData["Title"] = "Dashboard rezervací";
 }
 
 @model ReservationDashboardViewModel
 
+@section Style {
+    <link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
+}
+
 <link rel="stylesheet" href="~/css/homepage.css" />
 <div class="page-container py-4">
 
     <h2 class="header mb-4 text-center">
-        Evidence rezervací zasedacích místností
+        @Localizer["Meeting Room Reservation Records"]
     </h2>
     <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
         <div class="row g-0 h-100">
             <!-- Levý panel s filtry -->
             <aside class="d-flex flex-column justify-content-between col-12 col-md-4 col-lg-3 filter-sidebar">
                 <form asp-controller="Dashboard"
-                      asp-action="Reservation"
+                      asp-action="ReservationDashboard"
                       method="get">
                     <div class="fillter-upper-side">
                         <div class="sidebar-header">
-                            <h5>Filtrování místností</h5>
+                            <h5>@Localizer["Filter Reservations"]</h5>
                         </div>
                         <!-- Vyhledávání -->
                         <div class="search-container mb-3">
                             <label class="form-label" for="searchInput">
-                                Vyhledávání
+                                @Localizer["Search"]
                             </label>
                             <input id="searchInput"
                                    class="form-control"
                                    name="search"
                                    value="@(Model.Search ?? "")"
-                                   placeholder="Vyhledejte místnost, vybavení nebo patro..."
+                                   placeholder="@Localizer["Search by person or room..."]"
                                    type="search">
+                        </div>
+                        <!-- Místnost -->
+                        <div class="filter-section" id="RoomFilter">
+                            <label class="filter-header" for="RoomSelect">
+                                @Localizer["Room"]
+                            </label>
+                            <select id="RoomSelect"
+                                    class="form-select"
+                                    name="roomId"
+                                    data-choices-search="@Localizer["Search rooms..."]"
+                                    data-choices-no-results="@Localizer["No matching results"]"
+                                    data-choices-no-options="@Localizer["No more rooms to choose"]"
+                                    data-choices-select-text="@Localizer["Click to select"]"
+                                    disabled="@(Model.Rooms.Any() ? null : "disabled")">
+                                @if (!Model.Rooms.Any())
+                                {
+                                    <option value="" selected disabled>@Localizer["No rooms available"]</option>
+                                }
+                                else
+                                {
+                                    <option value="" selected="@(Model.RoomId == null ? "selected" : null)">
+                                        @Localizer["All Rooms"]
+                                    </option>
+                                    foreach (var room in Model.Rooms)
+                                    {
+                                        <option value="@room.RoomId" selected="@(room.RoomId == Model.RoomId ? "selected" : null)">
+                                            @room.RoomName
+                                        </option>
+                                    }
+                                }
+                            </select>
                         </div>
                         <!-- Počet lidí -->
                         <div class="filter-section" id="CapacityFilter">
                             <div class="filter-header">
-                                Počet lidí
+                                @Localizer["Number of People"]
                             </div>
                             <div class="row g-2">
                                 <div class="col-12">
@@ -55,30 +94,27 @@
                         <!-- Datum a čas -->
                         <div class="filter-section" id="DateFilter">
                             <div class="filter-header">
-                                Datum a čas
+                                @Localizer["Date and Time"]
                             </div>
-
                             <div class="mb-2">
-                                <label class="form-label" for="ReservationDateInput">Den</label>
+                                <label class="form-label" for="ReservationDateInput">@Localizer["Day"]</label>
                                 <input id="ReservationDateInput"
                                        class="form-control"
                                        value="@(Model.Day != null ? Model.Day.Value.ToString("yyyy-MM-dd") : "")"
                                        name="day"
                                        type="date">
                             </div>
-
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <label class="form-label" for="TimeFromInput">Od</label>
+                                    <label class="form-label" for="TimeFromInput">@Localizer["From"]</label>
                                     <input id="TimeFromInput"
                                            class="form-control"
                                            name="timeFrom"
                                            value="@(Model.TimeFrom != null ? Model.TimeFrom.Value.ToString("HH:mm") : "")"
                                            type="time">
                                 </div>
-
                                 <div class="col-6">
-                                    <label class="form-label" for="TimeToInput">Do</label>
+                                    <label class="form-label" for="TimeToInput">@Localizer["To"]</label>
                                     <input id="TimeToInput"
                                            class="form-control"
                                            value="@(Model.TimeTo != null ? Model.TimeTo.Value.ToString("HH:mm") : "")"
@@ -92,11 +128,14 @@
                         <!-- Tlačítka -->
                         <div class="d-grid gap-2 mt-3 filter-buttons">
                             <button id="filterButton" class="btn btn-success" type="submit">
-                                Použít filtry
+                                @Localizer["Apply Filters"]
                             </button>
-                            <button id="clearFilterButton" class="btn btn-outline-secondary" type="button">
-                                Vymazat filtry
-                            </button>
+                            <a asp-controller="Dashboard"
+                               asp-action="ReservationDashboard"
+                               id="clearFilterButton"
+                               class="btn btn-outline-secondary">
+                                @Localizer["Clear Filters"]
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -108,7 +147,7 @@
                     <div class="col-6">
                         <a
                            class="detail-tab active">
-                            Rezervace
+                            @Localizer["Reservations"]
                         </a>
                     </div>
 
@@ -116,7 +155,7 @@
                         <a asp-controller="Dashboard"
                            asp-action="RoomDashboard"
                            class="detail-tab">
-                            Místnosti
+                            @Localizer["Rooms"]
                         </a>
                     </div>
                 </div>
@@ -126,3 +165,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/lib/choices.js/choices.min.js"></script>
+}

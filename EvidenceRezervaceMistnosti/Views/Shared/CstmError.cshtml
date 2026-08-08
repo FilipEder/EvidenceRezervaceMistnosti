@@ -1,7 +1,11 @@
 ﻿@using EvidenceRezervaceMistnosti.Models.Shared
+@using Microsoft.Extensions.Localization
+
 @model CstmErrorViewModel
 
-<link rel="stylesheet" href="~/css/cstmError.cs"/>
+@inject IStringLocalizer<Trans> Localizer;
+
+<link rel="stylesheet" href="~/css/cstmError.css"/>
 <div class="error-page min-vh-100 d-flex align-items-center justify-content-center">
     <div class="container">
         <div class="error-card mx-auto text-center">
@@ -9,26 +13,26 @@
                 !
             </div>
             <p class="error-label mb-2">
-                Došlo k chybě
+                @Localizer["An error has occurred"]
             </p>
 
             <h1 class="error-title mb-3">
-                @Model.Title
+                @Localizer[Model.Title]
             </h1>
 
             <p class="error-description mb-4">
-                @Model.Description
+                @Localizer[Model.Description]
             </p>
             <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-                <a asp-controller="Home"
-                   asp-action="Index"
+                <a asp-controller="Dashboard"
+                   asp-action="ReservationDashboard"
                    class="btn btn-success px-4">
-                    Zpět na hlavní stránku
+                    @Localizer["Back to the Home Page"]
                 </a>
                 <button type="button"
                         class="btn btn-outline-secondary px-4"
                         onclick="history.back()">
-                    Přejít zpět
+                    @Localizer["Go back"]
                 </button>
             </div>
 

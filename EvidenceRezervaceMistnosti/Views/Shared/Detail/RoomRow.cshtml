@@ -1,32 +1,44 @@
 ﻿@using EvidenceRezervaceMistnosti.DTO.PartialView;
+@using Microsoft.Extensions.Localization;
+
 @model List<RoomRowDTO>
 
+@inject IStringLocalizer<Trans> Localizer;
 
 @foreach (RoomRowDTO detail in Model)
 {
     <div class="detail-card">
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <h5 class="reservation-title">Název místnosti: @detail.RoomName</h5>
+                <h5 class="reservation-title">@Localizer["Room Name"]: @detail.RoomName</h5>
                 <p class="reservation-location mb-0">
-                    Kapacita @detail.Capacity @(detail.Capacity == 1 ? "osoba" : "osob")
+                    @Localizer["Capacity"]: @detail.Capacity @(detail.Capacity == 1 ? Localizer["Person"] : Localizer["People"])
                 </p>
             </div>
 
             <div class="col-sm-6 col-lg-3 mt-3 mt-lg-0">
-                <span class="detail-label">Název lokace</span>
-                <strong class="d-block">@detail.LocationName</strong>
+                <span class="detail-label">
+                    @Localizer["Location Name"]</span>
+                <strong class="d-block">@Localizer[detail.LocationName]</strong>
             </div>
 
-            <div class="col-sm-6 col-lg-2 mt-3 mt-lg-0">
-                <span class="badge bg-warning-subtle text-success">
-                    @detail.EquipmentText
-                </span>
-            </div>
+            @if (detail.EquipmentKeys.Any())
+            {
+                <div class="col-sm-6 col-lg-2 mt-3 mt-lg-0">
+                    <div class="room-equipment-badges">
+                        @foreach (var equipmentKey in detail.EquipmentKeys)
+                        {
+                            <span class="badge bg-warning-subtle text-success room-equipment-badge">
+                                @Localizer[equipmentKey]
+                            </span>
+                        }
+                    </div>
+                </div>
+            }
 
-            <div class="col-lg-2 mt-3 mt-lg-0 text-lg-end">
+            <div class="col-lg-2 mt-3 mt-lg-0 text-lg-end ms-lg-auto">
                 <a class="btn btn-sm btn-outline-success" href="/detail/room/@(detail.RoomId)">
-                    Detail
+                    @Localizer["Detail"]
                 </a>
             </div>
         </div>

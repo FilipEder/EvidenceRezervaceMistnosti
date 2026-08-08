@@ -1,15 +1,18 @@
 ﻿@using EvidenceRezervaceMistnosti.DTO.PartialView;
+@using Microsoft.Extensions.Localization;
 
 @model RoomDashboardDTO
+
+@inject IStringLocalizer<Trans> Localizer;
 
 <div class="detail-container">
     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-3">
         <div>
-            <h4 class="mb-1">Místnosti</h4>
+            <h4 class="mb-1">@Localizer["Rooms"]</h4>
         </div>
         <a class="btn btn-success mt-3 mt-sm-0" type="button"
            asp-action="CreateRoom" asp-controller="Create">
-            + Nová místnost
+            + @Localizer["New Room"]
         </a>
     </div>
     @await Html.PartialAsync("~/Views/Shared/Detail/RoomRow.cshtml", Model.RoomRows)

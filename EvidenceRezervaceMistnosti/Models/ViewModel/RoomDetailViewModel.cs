@@ -4,6 +4,7 @@ namespace EvidenceRezervaceMistnosti.Models.ViewModel
 {
     public class RoomDetailViewModel
     {
+        public int RoomId { get; set; }
         public required string Name { get; set; }
         public int Capacity { get; set; }
         public List<int>? SelectedGearId { get; set; }

@@ -1,129 +1,296 @@
-﻿@using EvidenceRezervaceMistnosti.DTO.Form;
+@using EvidenceRezervaceMistnosti.DTO.Form;
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer<Trans> Localizer
 
 @model ReservationFormDTO
 
 @{
-    ViewData["Title"] = "Vytvořit rezervaci";
+    ViewData["Title"] = Localizer["Make a Reservation"];
+    var timeSlots = Enumerable.Range(0, 48)
+        .Select(index => TimeOnly.MinValue.AddMinutes(index * 30))
+        .ToList();
 }
 
-<link rel="stylesheet" href="~/css/homepage.css" />
-<link rel="stylesheet" href="~/css/form.css" />
-<link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
-<link href="~/lib/toastify-js/toastify.min.css" rel="stylesheet" />
-<link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+@section Style {
+    <link rel="stylesheet" href="~/css/form.css" />
+    <link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
+    <link href="~/lib/toastify-js/toastify.min.css" rel="stylesheet" />
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+}
 
-<div class="page-container py-4">
-    <h2 class="header mb-4 text-center">
-        Evidence rezervací zasedacích místností
-    </h2>
-    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
-        <div class="row g-0 h-100">
-            <main class="col-12  main-content">
-                <div class="row g-2 mb-4">
-                    <div class="col-1">
-                        <a asp-controller="Dashboard"
-                           asp-action="ReservationDashboard"
-                           style="cursor: pointer"
-                           class="detail-tab">
-                            Zpět
-                        </a>
-                    </div>
-                </div>
-                <div class="detail-container">
-                    <form asp-controller="ReservationApi" asp-action="Post" method="post" novalidate>
-                        <div class="row mb-3">
-                            <p class="section-header">Osobní informace</p>
-                            @* Jmeno *@
-                            <div class="col-4">
-                                <label name="Name" class="form-label">Jméno</label>
-                                <input type="text" name="Name" 
-                                       maxlength="30" placeholder="Zadejte jméno"
-                                    class="form-control" />
-                            </div>
-                            @* Prijmeni *@
-                            <div class="col-4">
-                                <label name="LastName" class="form-label">Příjmení</label>
-                                <input type="text" name="LastName"
-                                    maxlength="30" placeholder="Zadejte příjmení"
-                                    class="form-control" />
-                            </div>
-                            @* Email *@
-                            <div class="col-4">
-                                <label name="Email" class="form-label">Email</label>
-                                <input type="email" name="Email" 
-                                    maxlength="320" placeholder="Zadejte email"
-                                    class="form-control" />
-                            </div>
-                        </div>
-                        @* Room Information *@
-                        <div class="row mb-3">
-                            <p class="section-header">Informace o místnosti</p>
-                            @* Mistnost *@
-                            <div class="col-4">
-                                <label name="RoomId" class="form-label">Místnost</label>
-                                <select name="RoomId" name="RoomId" id="room-select" class="form-control">
-                                    <option value="">Vyberte místnost</option>
-                                    @if (Model.Rooms == null || !Model.Rooms.Any())
-                                    {
-                                        <option value="" disabled>Žádna místnost k dispozici</option>
-                                    }
-                                    else
-                                    {
-                                        foreach (var room in Model.Rooms)
-                                        {
-                                            <option value="@room.RoomId">
-                                                @room.RoomName | Kapacita: @room.Capacity
-                                            </option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                            @* Pocet lidi *@
-                            <div class="col-4">
-                                <label for="NumberOfPeople" class="form-label">Počet lidí</label>
-                                <input type="number" id="NumberOfPeople" 
-                                    min="1" placeholder="Zadejte počet lidí"
-                                    name="NumberOfPeople" class="form-control" />
-                            </div>
-                        </div>
-                        @* Dates *@
-                       <div class="row mb-3">
-                            <p class="section-header">Datum</p>
-                            @* Den *@
-                            <div class="col-4">
-                                <label for="Day" class="form-label">Den</label>
-                                <input type="date" id="Day"
-                                       min="@DateTime.Today.ToString("yyyy-MM-dd")"
-                                       max="@DateTime.Today.AddYears(1).ToString("yyyy-MM-dd")"
-                                       name="Day" class="form-control" />
-                            </div>
-                            @* CasOd *@
-                            <div class="col-4">
-                                <label for="TimeFrom" class="form-label">Od</label>
-                                <input type="time" id="TimeFrom"
-                                       name="TimeFrom" class="form-control" />
-                            </div>
-                            @* CasDo *@
-                            <div class="col-4">
-                                <label for="TimeTo" class="form-label">Do</label>
-                                <input type="time" id="TimeTo" name="TimeTo" class="form-control" />
-                            </div>
-                       </div>
-                        @* Popis *@
-                        <div class="form-group mb-3">
-                            <label for="Description" class="form-label">Popis</label>
-                            <textarea id="Description" name="Description" 
-                                maxlength="500"
-                                class="form-control" placeholder="Zadejte popis"></textarea>
-                        </div>
-                        <button type="submit" class="btn button-submit">Vytvořit</button>
-                    </form>
-                </div>
-            </main>
+<div class="page-container form-page py-4">
+    <div class="container form-page-width">
+        <div class="form-page-toolbar">
+            <a asp-controller="Dashboard"
+               asp-action="ReservationDashboard"
+               class="btn btn-sm btn-outline-secondary form-back-button">
+                <span aria-hidden="true">←</span>
+                @Localizer["Back"]
+            </a>
         </div>
+
+        <article class="form-workspace" data-form-workspace>
+            <header class="form-intro">
+                <div>
+                    <h1 class="form-title">@Localizer["Make a Reservation"]</h1>
+                </div>
+                <span class="form-status">
+                    @Localizer["New reservation"]
+                </span>
+            </header>
+
+            <form id="reservation-form"
+                  class="app-form"
+                  asp-controller="ReservationApi"
+                  asp-action="Post"
+                  method="post"
+                  novalidate
+                  data-mode="create"
+                  data-saving-label="@Localizer["Saving..."]"
+                  data-capacity-label="@Localizer["Capacity"]"
+                  data-search-rooms="@Localizer["Search rooms..."]"
+                  data-select-room="@Localizer["Select a room..."]"
+                  data-no-rooms="@Localizer["No more rooms to choose"]"
+                  data-click-to-select="@Localizer["Click to select"]"
+                  data-first-people="@Localizer["Enter the number of people first"]"
+                  data-no-suitable-rooms="@Localizer["No room has sufficient capacity"]"
+                  data-suitable-rooms="@Localizer["Suitable rooms: {0}"]"
+                  data-success-title="@Localizer["Great job!"]"
+                  data-success-message="@Localizer["Reservation was created successfully!"]"
+                  data-name-required="@Localizer["Enter a name"]"
+                  data-name-length="@Localizer["Name must contain 2 to 30 characters"]"
+                  data-last-name-required="@Localizer["Enter a last name"]"
+                  data-last-name-length="@Localizer["Last name must contain 2 to 30 characters"]"
+                  data-email-invalid="@Localizer["Enter a valid email address"]"
+                  data-room-required="@Localizer["Select a room"]"
+                  data-people-range="@Localizer["Number of people must be between 1 and 1000"]"
+                  data-capacity-exceeded="@Localizer["Number of people exceeds room capacity"]"
+                  data-day-required="@Localizer["Select a reservation date"]"
+                  data-day-invalid="@Localizer["Enter a valid reservation date"]"
+                  data-day-range="@Localizer["Reservation date must be within one year from today"]"
+                  data-time-from-required="@Localizer["Select a start time"]"
+                  data-time-to-required="@Localizer["Select an end time"]"
+                  data-time-order="@Localizer["End time must be after start time"]"
+                  data-time-conflict="@Localizer["Selected time overlaps an existing reservation"]"
+                  data-description-length="@Localizer["Description must be empty or contain 4 to 500 characters"]"
+                  data-validation-summary="@Localizer["Please correct the highlighted fields"]"
+                  data-availability-error="@Localizer["Availability could not be loaded"]"
+                  data-server-error="@Localizer["Server error while saving"]"
+                  data-connection-error="@Localizer["Could not connect to the server"]">
+
+                <section class="form-section" aria-labelledby="personal-information-heading">
+                    <div class="form-section-heading">
+                        <div>
+                            <h2 id="personal-information-heading">@Localizer["Personal Information"]</h2>
+                            <p>@Localizer["Enter your contact information."]</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid form-grid--identity">
+                        <div class="form-group">
+                            <label for="Name" class="form-label">
+                                @Localizer["Name"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input type="text"
+                                   name="Name"
+                                   id="Name"
+                                   maxlength="30"
+                                   placeholder="@Localizer["Enter your name"]"
+                                   class="form-control form-control-lg"
+                                   autocomplete="given-name"
+                                   required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="LastName" class="form-label">
+                                @Localizer["Last Name"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input type="text"
+                                   name="LastName"
+                                   id="LastName"
+                                   maxlength="30"
+                                   placeholder="@Localizer["Enter your last name"]"
+                                   class="form-control form-control-lg"
+                                   autocomplete="family-name"
+                                   required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email" class="form-label">
+                                @Localizer["Email"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input type="email"
+                                   name="Email"
+                                   id="Email"
+                                   maxlength="320"
+                                   placeholder="@Localizer["Enter your email"]"
+                                   class="form-control form-control-lg"
+                                   autocomplete="email"
+                                   inputmode="email"
+                                   required />
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section" aria-labelledby="room-information-heading">
+                    <div class="form-section-heading">
+                        <div>
+                            <h2 id="room-information-heading">@Localizer["Room Information"]</h2>
+                            <p>@Localizer["Enter the number of people to see suitable rooms."]</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid form-grid--booking">
+                        <div class="form-group">
+                            <label for="NumberOfPeople" class="form-label">
+                                @Localizer["Number of People"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input type="number"
+                                   id="NumberOfPeople"
+                                   min="1"
+                                   max="1000"
+                                   step="1"
+                                   placeholder="@Localizer["Enter number of people"]"
+                                   name="NumberOfPeople"
+                                   class="form-control form-control-lg"
+                                   inputmode="numeric"
+                                   aria-controls="RoomId"
+                                   required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="RoomId" class="form-label">
+                                @Localizer["Room"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <select name="RoomId"
+                                    id="RoomId"
+                                    class="form-select form-select-lg"
+                                    aria-describedby="room-capacity-hint"
+                                    required>
+                                <option disabled selected value="">@Localizer["Enter the number of people first"]</option>
+                                @if (Model.Rooms == null || !Model.Rooms.Any())
+                                {
+                                    <option value="" disabled>@Localizer["No rooms available"]</option>
+                                }
+                                else
+                                {
+                                    foreach (var room in Model.Rooms)
+                                    {
+                                        <option value="@room.RoomId" data-capacity="@room.Capacity">
+                                            @room.RoomName | @Localizer["Capacity"]: @room.Capacity
+                                        </option>
+                                    }
+                                }
+                            </select>
+                            <div id="room-capacity-hint" class="form-text" aria-live="polite"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section" aria-labelledby="schedule-heading">
+                    <div class="form-section-heading">
+                        <div>
+                            <h2 id="schedule-heading">@Localizer["Date and Time"]</h2>
+                            <p>@Localizer["Select the reservation date and time."]</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid form-grid--schedule">
+                        <div class="form-group">
+                            <label for="Day" class="form-label">
+                                @Localizer["Day"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input type="date"
+                                   id="Day"
+                                   min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                   max="@DateTime.Today.AddYears(1).ToString("yyyy-MM-dd")"
+                                   name="Day"
+                                   class="form-control form-control-lg"
+                                   required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="TimeFrom" class="form-label">
+                                @Localizer["From"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <select id="TimeFrom" name="TimeFrom" class="form-select form-select-lg" required>
+                                <option value="" selected disabled>@Localizer["Select a start time"]</option>
+                                @foreach (var time in timeSlots)
+                                {
+                                    string value = time.ToString("HH:mm");
+                                    <option value="@value">@value</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="TimeTo" class="form-label">
+                                @Localizer["To"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <select id="TimeTo" name="TimeTo" class="form-select form-select-lg" required>
+                                <option value="" selected disabled>@Localizer["Select an end time"]</option>
+                                @foreach (var time in timeSlots)
+                                {
+                                    string value = time.ToString("HH:mm");
+                                    <option value="@value">@value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section" aria-labelledby="description-heading">
+                    <div class="form-section-heading">
+                        <div>
+                            <div class="d-flex align-items-center gap-2">
+                                <h2 id="description-heading">@Localizer["Description"]</h2>
+                                <span class="optional-label">@Localizer["Optional"]</span>
+                            </div>
+                            <p>@Localizer["Description must be empty or contain 4 to 500 characters"]</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-field--prose">
+                        <textarea id="Description"
+                                  name="Description"
+                                  maxlength="500"
+                                  rows="5"
+                                  class="form-control"
+                                  aria-describedby="description-counter"
+                                  placeholder="@Localizer["Enter description"]"></textarea>
+                        <div id="description-counter" class="form-counter" aria-live="polite">
+                            <span id="description-count">0</span>/500
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="form-actions mb-5">
+                    <a asp-controller="Dashboard"
+                       asp-action="ReservationDashboard"
+                       class="btn btn-outline-secondary">
+                        @Localizer["Cancel"]
+                    </a>
+                    <button type="submit" class="btn btn-success button-submit">
+                        @Localizer["Create Reservation"]
+                    </button>
+                </footer>
+            </form>
+        </article>
     </div>
 </div>
-<script src="~/lib/choices.js/choices.min.js"></script>
-<script src="~/lib/toastify-js/toastify.min.js"></script>
-<script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="~/js/form/ReservationForm.js"></script>
+
+@section Scripts {
+    <script src="~/lib/choices.js/choices.min.js"></script>
+    <script src="~/lib/toastify-js/toastify.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/js/form/ReservationForm.js" asp-append-version="true"></script>
+}

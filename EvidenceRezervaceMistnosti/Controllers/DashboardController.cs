@@ -1,4 +1,5 @@
 ﻿using EvidenceRezervaceMistnosti.DTO.PartialView;
+using EvidenceRezervaceMistnosti.DTO.Select;
 using EvidenceRezervaceMistnosti.Models;
 using EvidenceRezervaceMistnosti.Models.Filter;
 using EvidenceRezervaceMistnosti.Models.Shared;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvidenceRezervaceMistnosti.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class DashboardController : Controller
     {
         private readonly ILogger<DashboardController> _logger;
@@ -25,6 +27,8 @@ namespace EvidenceRezervaceMistnosti.Controllers
         {
             try
             {
+                filter ??= new ReservationFilterViewModel();
+
                 ReservationDashboardViewModel model = new()
                 {
                     ReservationDashboard = new()
@@ -32,12 +36,13 @@ namespace EvidenceRezervaceMistnosti.Controllers
                         ReservationRows = await _ctx.Reservation
                         .AsNoTracking()
                         .Include(e => e.Room)
-                        .Where(e => 
-                        (e.IsActive) && 
+                        .Where(e =>
+                        (e.IsActive) &&
                         (filter.Search == null ||
-                            e.Name.Contains(filter.Search) || 
+                            e.Name.Contains(filter.Search) ||
                             e.LastName.Contains(filter.Search) ||
                             e.Room!.Name.Contains(filter.Search)) &&
+                        (filter.RoomId == null || e.RoomId == filter.RoomId) &&
                         (filter.NumberOfPeople == null || e.NumberOfPeople == filter.NumberOfPeople) &&
                         (filter.Day == null || e.DateReservation == filter.Day) &&
                         (filter.TimeFrom == null || e.TimeFrom >= filter.TimeFrom) &&
@@ -50,12 +55,26 @@ namespace EvidenceRezervaceMistnosti.Controllers
                             ReservatioName = e.Name,
                             NumberOfPeople = e.NumberOfPeople,
                             RoomName = e.Room!.Name,
-                            DayReservation = e.DateReservation.ToString("dd.MM.yyyy"),
+                            DayReservation = e.DateReservation,
                             TimeReservation = $"{e.TimeFrom.ToString("HH:mm")}-{e.TimeTo.ToString("HH:mm")}",
                         })
                         .ToListAsync()
                     },
+                    Rooms = await _ctx.Reservation
+                        .AsNoTracking()
+                        .Where(e => e.IsActive)
+                        .Select(e => new RoomSelectDTO
+                        {
+                            RoomId = e.RoomId,
+                            RoomName = e.Room!.Name,
+                            Capacity = e.Room.Capacity
+                        })
+                        .Distinct()
+                        .OrderBy(e => e.RoomName)
+                        .ThenBy(e => e.RoomId)
+                        .ToListAsync(),
                     Search = filter.Search,
+                    RoomId = filter.RoomId,
                     NumberOfPeople = filter.NumberOfPeople,
                     Day = filter.Day,
                     TimeFrom = filter.TimeFrom,
@@ -68,10 +87,11 @@ namespace EvidenceRezervaceMistnosti.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Naskytla se chyba při načítání hlavní stránky");
+                Response.StatusCode = StatusCodes.Status500InternalServerError;
                 return View("CstmError", new CstmErrorViewModel
                 {
-                    Title = "Při načítání hlavní stránky došlo k chybě.",
-                    Description = "Kontaktujte administrátora."
+                    Title = "An error occurred while loading the dashboard",
+                    Description = "Contact the administrator."
                 });
             }
         }
@@ -102,9 +122,32 @@ namespace EvidenceRezervaceMistnosti.Controllers
                             RoomName = e.Name,
                             Capacity = e.Capacity,
                             LocationName = e.Location.Name,
-                            EquipmentText = string.Join(",", e.RoomEquipment.Select(e => e.Equipment.Name))
+                            EquipmentKeys = e.RoomEquipment
+                                .OrderBy(re => re.EquipmentId)
+                                .Select(re => re.Equipment.Name)
+                                .ToList()
                         }).ToListAsync(),
                     },
+                    Equipments = await _ctx.Equipment
+                        .AsNoTracking()
+                        .Where(e => e.IsActive)
+                        .OrderBy(e => e.EquipmentId)
+                        .Select(e => new EquipmentSelectDTO
+                        {
+                            EquipmentId = e.EquipmentId,
+                            EquipmentName = e.Name
+                        })
+                        .ToListAsync(),
+                    Locations = await _ctx.Location
+                        .AsNoTracking()
+                        .Where(e => e.IsActive)
+                        .OrderBy(e => e.LocationId)
+                        .Select(e => new LocationSelectDTO
+                        {
+                            LocationId = e.LocationId,
+                            LocationName = e.Name
+                        })
+                        .ToListAsync(),
                     Search = filter.Search,
                     LocationId = filter.LocationId,
                     EquipmentId = filter.EquipmentId,
@@ -117,10 +160,11 @@ namespace EvidenceRezervaceMistnosti.Controllers
             catch(Exception ex)
             {
                 _logger.LogError(ex, "Naskytla se chyba při načítání hlavní stránky");
+                Response.StatusCode = StatusCodes.Status500InternalServerError;
                 return View("CstmError", new CstmErrorViewModel
                 {
-                    Title = "Při načítání hlavní stránky došlo k chybě.",
-                    Description = "Kontaktujte administrátora."
+                    Title = "An error occurred while loading the dashboard",
+                    Description = "Contact the administrator."
                 });
             }
         }

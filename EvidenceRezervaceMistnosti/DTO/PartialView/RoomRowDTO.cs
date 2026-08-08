@@ -6,6 +6,6 @@
         public required string RoomName { get; set; }
         public int Capacity { get; set; }
         public required string LocationName { get; set; }
-        public required string EquipmentText { get; set; }
+        public required List<string> EquipmentKeys { get; set; }
     }
 }

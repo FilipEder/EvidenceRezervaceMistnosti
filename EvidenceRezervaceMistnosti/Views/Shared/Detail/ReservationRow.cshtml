@@ -1,21 +1,26 @@
 ﻿@using EvidenceRezervaceMistnosti.DTO.PartialView;
+@using Microsoft.Extensions.Localization;
+
 @model List<ReservationRowDTO>
 
+@inject IStringLocalizer<Trans> Localizer;
 
 @foreach(ReservationRowDTO detail in Model)
 {
     <div class="detail-card">
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <h5 class="reservation-title">Místnost: @detail.RoomName</h5>
+                <h5 class="reservation-title">@Localizer["Room"]: @detail.RoomName</h5>
                 <p class="reservation-location mb-0">
-                    Počet lidí @detail.NumberOfPeople
+                    @Localizer["Number of People"] @detail.NumberOfPeople
                 </p>
             </div>
 
             <div class="col-sm-6 col-lg-3 mt-3 mt-lg-0">
-                <span class="detail-label">Čas rezervace</span>
-                <strong class="d-block">@detail.DayReservation</strong>
+                <span class="detail-label">
+                    @Localizer["Reservation Time"]
+                </span>
+                <strong class="d-block">@detail.DayReservation.ToString("d")</strong>
                 <strong class="d-block">@detail.TimeReservation</strong>
             </div>
 
@@ -26,8 +31,11 @@
             </div>
 
             <div class="col-lg-2 mt-3 mt-lg-0 text-lg-end">
-                <a class="btn btn-sm btn-outline-success" href="detail/reservation/@(detail.ReservationId)">
-                    Detail
+                <a class="btn btn-sm btn-outline-success"
+                   asp-controller="Detail"
+                   asp-action="ReservationDetail"
+                   asp-route-id="@detail.ReservationId">
+                    @Localizer["Detail"]
                 </a>
             </div>
         </div>

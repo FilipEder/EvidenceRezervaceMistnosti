@@ -1,11 +1,13 @@
 ﻿using EvidenceRezervaceMistnosti.DTO.Form;
 using EvidenceRezervaceMistnosti.Models;
+using EvidenceRezervaceMistnosti.Models.Shared;
 using EvidenceRezervaceMistnosti.DTO.Select;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EvidenceRezervaceMistnosti.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class CreateController : Controller
     {
         private readonly ILogger<CreateController> _logger;
@@ -26,6 +28,8 @@ namespace EvidenceRezervaceMistnosti.Controllers
                 {
                     EquipmentSelect = await _ctx.Equipment
                     .AsNoTracking()
+                    .Where(e => e.IsActive)
+                    .OrderBy(e => e.EquipmentId)
                     .Select(e => new EquipmentSelectDTO
                     {
                         EquipmentId = e.EquipmentId,
@@ -34,6 +38,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
 
                     LocationSelect = await _ctx.Location
                     .AsNoTracking()
+                    .Where(e => e.IsActive)
                     .Select(e => new LocationSelectDTO
                     {
                         LocationId = e.LocationId,
@@ -43,10 +48,15 @@ namespace EvidenceRezervaceMistnosti.Controllers
 
                 return View(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _logger.LogError(ex, "P");
-                return View();
+                _logger.LogError(ex, "Chyba při načítání formuláře pro vytvoření místnosti");
+                Response.StatusCode = StatusCodes.Status500InternalServerError;
+                return View("CstmError", new CstmErrorViewModel
+                {
+                    Title = "Form could not be loaded",
+                    Description = "Reload the page. If the error persists, contact the administrator."
+                });
             }
         }
         [HttpGet]
@@ -59,6 +69,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
                 {
                     Rooms = await _ctx.Room
                     .AsNoTracking()
+                    .Where(e => e.IsActive)
                     .Select(e => new RoomSelectDTO
                     {
                         RoomId = e.RoomId,
@@ -69,10 +80,15 @@ namespace EvidenceRezervaceMistnosti.Controllers
 
                 return View(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _logger.LogError(ex, "P");
-                return View();
+                _logger.LogError(ex, "Chyba při načítání formuláře pro vytvoření rezervace");
+                Response.StatusCode = StatusCodes.Status500InternalServerError;
+                return View("CstmError", new CstmErrorViewModel
+                {
+                    Title = "Form could not be loaded",
+                    Description = "Reload the page. If the error persists, contact the administrator."
+                });
             }
         }
     }

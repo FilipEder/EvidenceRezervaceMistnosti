@@ -27,6 +27,7 @@ namespace EvidenceRezervaceMistnosti.API
                 List<EquipmentResponse> response = await _ctx.Equipment
                     .AsNoTracking()
                     .Where(e => e.IsActive)
+                    .OrderBy(e => e.EquipmentId)
                     .Select(e => new EquipmentResponse
                     {
                         EquipmentId = e.EquipmentId,

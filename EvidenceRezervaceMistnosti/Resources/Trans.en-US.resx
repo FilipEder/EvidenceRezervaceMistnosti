@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="All Equipment" xml:space="preserve">
+    <value>All Equipment</value>
+  </data>
+  <data name="An error has occurred" xml:space="preserve">
+    <value>An error has occurred</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Apply Filters</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Back to the Home Page" xml:space="preserve">
+    <value>Back to the Home Page</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="Clear Filters" xml:space="preserve">
+    <value>Clear Filters</value>
+  </data>
+  <data name="Create Reservation" xml:space="preserve">
+    <value>Create Reservation</value>
+  </data>
+  <data name="Create Room" xml:space="preserve">
+    <value>Create Room</value>
+  </data>
+  <data name="Date and Time" xml:space="preserve">
+    <value>Date and Time</value>
+  </data>
+  <data name="Dates" xml:space="preserve">
+    <value>Dates</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Enter a last name" xml:space="preserve">
+    <value>Enter a last name</value>
+  </data>
+  <data name="Enter a name" xml:space="preserve">
+    <value>Enter a name</value>
+  </data>
+  <data name="Enter an email" xml:space="preserve">
+    <value>Enter an email</value>
+  </data>
+  <data name="Enter description" xml:space="preserve">
+    <value>Enter description</value>
+  </data>
+  <data name="Enter number of people" xml:space="preserve">
+    <value>Enter number of people</value>
+  </data>
+  <data name="Enter your email" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="Enter your last name" xml:space="preserve">
+    <value>Enter your last name</value>
+  </data>
+  <data name="Enter your name" xml:space="preserve">
+    <value>Enter your name</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>Equipment</value>
+  </data>
+  <data name="Equipment Type" xml:space="preserve">
+    <value>Equipment Type</value>
+  </data>
+  <data name="Filter by Room" xml:space="preserve">
+    <value>Filter by Room</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Go back" xml:space="preserve">
+    <value>Go back</value>
+  </data>
+  <data name="Last Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Location Name" xml:space="preserve">
+    <value>Location Name</value>
+  </data>
+  <data name="Make a Reservation" xml:space="preserve">
+    <value>Make a Reservation</value>
+  </data>
+  <data name="Meeting Room Reservation Records" xml:space="preserve">
+    <value>Meeting Room Reservation Records</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="New reservation" xml:space="preserve">
+    <value>New reservation</value>
+  </data>
+  <data name="New Room" xml:space="preserve">
+    <value>New Room</value>
+  </data>
+  <data name="No equipment available" xml:space="preserve">
+    <value>No equipment available</value>
+  </data>
+  <data name="No locations available" xml:space="preserve">
+    <value>No locations available</value>
+  </data>
+  <data name="No rooms available" xml:space="preserve">
+    <value>No rooms are available</value>
+  </data>
+  <data name="Number of People" xml:space="preserve">
+    <value>Number of People</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>people</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>person</value>
+  </data>
+  <data name="Personal Information" xml:space="preserve">
+    <value>Personal Information</value>
+  </data>
+  <data name="Reservation Time" xml:space="preserve">
+    <value>Reservation Time</value>
+  </data>
+  <data name="Reservations" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
+  <data name="Room" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="Room Information" xml:space="preserve">
+    <value>Room Information</value>
+  </data>
+  <data name="Room Name" xml:space="preserve">
+    <value>Room Name</value>
+  </data>
+  <data name="Room Reservation Records" xml:space="preserve">
+    <value>Room Reservation Records</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Rooms</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search for a room, equipment, or floor..." xml:space="preserve">
+    <value>Search for a room, equipment, or floor...</value>
+  </data>
+  <data name="Select a location" xml:space="preserve">
+    <value>Select a location</value>
+  </data>
+  <data name="Select a room" xml:space="preserve">
+    <value>Select a room</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="All Locations" xml:space="preserve">
+    <value>All Locations</value>
+  </data>
+  <data name="Change language" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="Czech" xml:space="preserve">
+    <value>Czech</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="Search equipment..." xml:space="preserve">
+    <value>Search equipment...</value>
+  </data>
+  <data name="Select equipment..." xml:space="preserve">
+    <value>Select equipment...</value>
+  </data>
+  <data name="No more equipment to choose" xml:space="preserve">
+    <value>No more equipment to choose</value>
+  </data>
+  <data name="Click to select" xml:space="preserve">
+    <value>Click to select</value>
+  </data>
+  <data name="No matching results" xml:space="preserve">
+    <value>No matching results found</value>
+  </data>
+  <data name="Search locations..." xml:space="preserve">
+    <value>Search locations...</value>
+  </data>
+  <data name="Select a location..." xml:space="preserve">
+    <value>Select a location...</value>
+  </data>
+  <data name="No more locations to choose" xml:space="preserve">
+    <value>No more locations to choose</value>
+  </data>
+  <data name="Search rooms..." xml:space="preserve">
+    <value>Search rooms...</value>
+  </data>
+  <data name="Select a room..." xml:space="preserve">
+    <value>Select a room...</value>
+  </data>
+  <data name="No more rooms to choose" xml:space="preserve">
+    <value>No more rooms to choose</value>
+  </data>
+  <data name="Great job!" xml:space="preserve">
+    <value>Great job!</value>
+  </data>
+  <data name="Room was created successfully!" xml:space="preserve">
+    <value>Room was created successfully!</value>
+  </data>
+  <data name="Reservation was created successfully!" xml:space="preserve">
+    <value>Reservation was created successfully!</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Reservation was updated successfully!" xml:space="preserve">
+    <value>Reservation was updated successfully!</value>
+  </data>
+  <data name="Room was updated successfully!" xml:space="preserve">
+    <value>Room was updated successfully!</value>
+  </data>
+  <data name="Name must contain 2 to 30 characters" xml:space="preserve">
+    <value>Name must contain 2 to 30 characters</value>
+  </data>
+  <data name="Last name must contain 2 to 30 characters" xml:space="preserve">
+    <value>Last name must contain 2 to 30 characters</value>
+  </data>
+  <data name="Enter a valid email address" xml:space="preserve">
+    <value>Enter a valid email address</value>
+  </data>
+  <data name="Number of people must be between 1 and 1000" xml:space="preserve">
+    <value>Number of people must be between 1 and 1000</value>
+  </data>
+  <data name="Number of people exceeds room capacity" xml:space="preserve">
+    <value>Number of people exceeds room capacity</value>
+  </data>
+  <data name="Select a reservation date" xml:space="preserve">
+    <value>Select a reservation date</value>
+  </data>
+  <data name="Enter a valid reservation date" xml:space="preserve">
+    <value>Enter a valid reservation date</value>
+  </data>
+  <data name="Reservation date must be within one year from today" xml:space="preserve">
+    <value>Reservation date must be within one year from today</value>
+  </data>
+  <data name="Select a start time" xml:space="preserve">
+    <value>Select a start time</value>
+  </data>
+  <data name="Select an end time" xml:space="preserve">
+    <value>Select an end time</value>
+  </data>
+  <data name="End time must be after start time" xml:space="preserve">
+    <value>End time must be after start time</value>
+  </data>
+  <data name="Selected time overlaps an existing reservation" xml:space="preserve">
+    <value>Selected time overlaps an existing reservation</value>
+  </data>
+  <data name="Description must be empty or contain 4 to 500 characters" xml:space="preserve">
+    <value>Description must be empty or contain 4 to 500 characters</value>
+  </data>
+  <data name="Please correct the highlighted fields" xml:space="preserve">
+    <value>Please correct the highlighted fields</value>
+  </data>
+  <data name="Availability could not be loaded" xml:space="preserve">
+    <value>Availability could not be loaded</value>
+  </data>
+  <data name="Server error while saving" xml:space="preserve">
+    <value>Server error while saving</value>
+  </data>
+  <data name="Could not connect to the server" xml:space="preserve">
+    <value>Could not connect to the server</value>
+  </data>
+  <data name="Enter a room name" xml:space="preserve">
+    <value>Enter a room name</value>
+  </data>
+  <data name="Room name must contain 5 to 120 characters" xml:space="preserve">
+    <value>Room name must contain 5 to 120 characters</value>
+  </data>
+  <data name="Capacity must be between 1 and 1000" xml:space="preserve">
+    <value>Capacity must be between 1 and 1000</value>
+  </data>
+  <data name="Edit Reservation" xml:space="preserve">
+    <value>Edit Reservation</value>
+  </data>
+  <data name="Save Reservation" xml:space="preserve">
+    <value>Save Reservation</value>
+  </data>
+  <data name="Edit Room" xml:space="preserve">
+    <value>Edit Room</value>
+  </data>
+  <data name="Save Room" xml:space="preserve">
+    <value>Save Room</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Cancel editing" xml:space="preserve">
+    <value>Cancel editing</value>
+  </data>
+  <data name="Cancel Reservation" xml:space="preserve">
+    <value>Cancel reservation</value>
+  </data>
+  <data name="Cancel this reservation?" xml:space="preserve">
+    <value>Cancel this reservation?</value>
+  </data>
+  <data name="The reservation will be canceled and its time will become available." xml:space="preserve">
+    <value>The reservation will be canceled and its time will become available.</value>
+  </data>
+  <data name="Yes, cancel reservation" xml:space="preserve">
+    <value>Yes, cancel reservation</value>
+  </data>
+  <data name="Keep reservation" xml:space="preserve">
+    <value>Keep reservation</value>
+  </data>
+  <data name="Reservation was canceled successfully!" xml:space="preserve">
+    <value>Reservation was canceled successfully!</value>
+  </data>
+  <data name="Server error while canceling reservation" xml:space="preserve">
+    <value>Server error while canceling reservation</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="Chair" xml:space="preserve">
+    <value>Chair</value>
+  </data>
+  <data name="Projector" xml:space="preserve">
+    <value>Projector</value>
+  </data>
+  <data name="Projection screen" xml:space="preserve">
+    <value>Projection screen</value>
+  </data>
+  <data name="TV or monitor" xml:space="preserve">
+    <value>TV or monitor</value>
+  </data>
+  <data name="Air conditioning" xml:space="preserve">
+    <value>Air conditioning</value>
+  </data>
+  <data name="Microphone" xml:space="preserve">
+    <value>Microphone</value>
+  </data>
+  <data name="Computer" xml:space="preserve">
+    <value>Computer</value>
+  </data>
+  <data name="Bed" xml:space="preserve">
+    <value>Bed</value>
+  </data>
+  <data name="An unexpected error occurred" xml:space="preserve">
+    <value>An unexpected error occurred</value>
+  </data>
+  <data name="The request could not be processed. Please try again later." xml:space="preserve">
+    <value>The request could not be processed. Please try again later.</value>
+  </data>
+  <data name="Bad request" xml:space="preserve">
+    <value>Bad request</value>
+  </data>
+  <data name="Check the entered information and submit the request again." xml:space="preserve">
+    <value>Check the entered information and submit the request again.</value>
+  </data>
+  <data name="Access denied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="You do not have permission to perform this action." xml:space="preserve">
+    <value>You do not have permission to perform this action.</value>
+  </data>
+  <data name="Page not found" xml:space="preserve">
+    <value>Page not found</value>
+  </data>
+  <data name="Check the address or return to the reservation overview." xml:space="preserve">
+    <value>Check the address or return to the reservation overview.</value>
+  </data>
+  <data name="The request could not be processed" xml:space="preserve">
+    <value>The request could not be processed</value>
+  </data>
+  <data name="Try the request again or return to the home page." xml:space="preserve">
+    <value>Try the request again or return to the home page.</value>
+  </data>
+  <data name="Form could not be loaded" xml:space="preserve">
+    <value>Form could not be loaded</value>
+  </data>
+  <data name="Reload the page. If the error persists, contact the administrator." xml:space="preserve">
+    <value>Reload the page. If the error persists, contact the administrator.</value>
+  </data>
+  <data name="An error occurred while loading the dashboard" xml:space="preserve">
+    <value>An error occurred while loading the dashboard</value>
+  </data>
+  <data name="Contact the administrator." xml:space="preserve">
+    <value>Contact the administrator.</value>
+  </data>
+  <data name="An error occurred while retrieving the room" xml:space="preserve">
+    <value>An error occurred while retrieving the room</value>
+  </data>
+  <data name="Check whether the room exists. If the error persists, contact the administrator." xml:space="preserve">
+    <value>Check whether the room exists. If the error persists, contact the administrator.</value>
+  </data>
+  <data name="An error occurred while retrieving the reservation" xml:space="preserve">
+    <value>An error occurred while retrieving the reservation</value>
+  </data>
+  <data name="Check whether the reservation exists. If the error persists, contact the administrator." xml:space="preserve">
+    <value>Check whether the reservation exists. If the error persists, contact the administrator.</value>
+  </data>
+  <data name="Add the basic information, location and equipment for the room." xml:space="preserve">
+    <value>Add the basic information, location and equipment for the room.</value>
+  </data>
+  <data name="Basic information" xml:space="preserve">
+    <value>Basic information</value>
+  </data>
+  <data name="Location and equipment" xml:space="preserve">
+    <value>Location and equipment</value>
+  </data>
+  <data name="Optional" xml:space="preserve">
+    <value>Optional</value>
+  </data>
+  <data name="Room detail" xml:space="preserve">
+    <value>Room detail</value>
+  </data>
+  <data name="Review the room information or switch to edit mode." xml:space="preserve">
+    <value>Review the room information or switch to edit mode.</value>
+  </data>
+  <data name="View mode" xml:space="preserve">
+    <value>View mode</value>
+  </data>
+  <data name="Edit mode" xml:space="preserve">
+    <value>Edit mode</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Saving...</value>
+  </data>
+  <data name="Enter contact, room and schedule information for the reservation." xml:space="preserve">
+    <value>Enter contact, room and schedule information for the reservation.</value>
+  </data>
+  <data name="Enter your contact information." xml:space="preserve">
+    <value>Enter your contact information.</value>
+  </data>
+  <data name="Select a room and enter the number of people." xml:space="preserve">
+    <value>Select a room and enter the number of people.</value>
+  </data>
+  <data name="Select the reservation date and time." xml:space="preserve">
+    <value>Select the reservation date and time.</value>
+  </data>
+  <data name="Reservation detail" xml:space="preserve">
+    <value>Reservation detail</value>
+  </data>
+  <data name="Review the reservation information or switch to edit mode." xml:space="preserve">
+    <value>Review the reservation information or switch to edit mode.</value>
+  </data>
+  <data name="Enter the number of people first" xml:space="preserve">
+    <value>Enter the number of people first</value>
+  </data>
+  <data name="No room has sufficient capacity" xml:space="preserve">
+    <value>No room has sufficient capacity</value>
+  </data>
+  <data name="Suitable rooms: {0}" xml:space="preserve">
+    <value>Suitable rooms: {0}</value>
+  </data>
+  <data name="Enter the number of people to see suitable rooms." xml:space="preserve">
+    <value>Enter the number of people to see suitable rooms.</value>
+  </data>
+  <data name="Filter Reservations" xml:space="preserve">
+    <value>Filter reservations</value>
+  </data>
+  <data name="All Rooms" xml:space="preserve">
+    <value>All rooms</value>
+  </data>
+  <data name="Search by person or room..." xml:space="preserve">
+    <value>Search by person or room...</value>
+  </data>
+  <data name="Floor" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="1st floor" xml:space="preserve">
+    <value>1st floor</value>
+  </data>
+  <data name="2nd floor" xml:space="preserve">
+    <value>2nd floor</value>
+  </data>
+  <data name="3rd floor" xml:space="preserve">
+    <value>3rd floor</value>
+  </data>
+  <data name="4th floor" xml:space="preserve">
+    <value>4th floor</value>
+  </data>
+  <data name="5th floor" xml:space="preserve">
+    <value>5th floor</value>
+  </data>
+  <data name="6th floor" xml:space="preserve">
+    <value>6th floor</value>
+  </data>
+</root>

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvidenceRezervaceMistnosti.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class DetailController : Controller
     {
         private readonly ILogger<DetailController> _logger;
@@ -29,21 +30,29 @@ namespace EvidenceRezervaceMistnosti.Controllers
                 if (room == null)
                 {
                     _logger.LogWarning("Při získávání místnosti s ID {id} nastala chyba", id);
+                    Response.StatusCode = StatusCodes.Status404NotFound;
                     return View("CstmError", new CstmErrorViewModel
                     {
-                        Title = "Při získávání místnosti nastala chyba",
-                        Description = "Zkontroluj, zda daná místnost existuje. " +
-                        "Pokud chyba přetrvává, kontaktuj administrátora."
+                        Title = "An error occurred while retrieving the room",
+                        Description = "Check whether the room exists. If the error persists, contact the administrator."
                     });
                 }
 
                 RoomDetailViewModel model = new()
                 {
+                    RoomId = room.RoomId,
                     Name = room.Name,
                     Capacity = room.Capacity,
                     SelectedLocationId = room.LocationId,
+                    SelectedGearId = await _ctx.RoomEquipment
+                        .AsNoTracking()
+                        .Where(item => item.RoomId == room.RoomId)
+                        .Select(item => item.EquipmentId)
+                        .ToListAsync(),
                     EquipmentSelect = await _ctx.Equipment
                     .AsNoTracking()
+                    .Where(e => e.IsActive)
+                    .OrderBy(e => e.EquipmentId)
                     .Select(e => new EquipmentSelectDTO
                     {
                         EquipmentId = e.EquipmentId,
@@ -52,6 +61,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
                     .ToListAsync(),
                     LocationSelect = await _ctx.Location
                     .AsNoTracking()
+                    .Where(e => e.IsActive)
                     .Select(e => new LocationSelectDTO
                     {
                         LocationId = e.LocationId,
@@ -67,11 +77,11 @@ namespace EvidenceRezervaceMistnosti.Controllers
             catch(Exception ex)
             {
                 _logger.LogError(ex, $"Chyba při získávání místnosti s {id}");
+                Response.StatusCode = StatusCodes.Status500InternalServerError;
                 return View("CstmError", new CstmErrorViewModel
                 {
-                    Title = "Při získávání místnosti nastala chyba",
-                    Description = "Zkontroluj, zda daná místnost existuje. " +
-                       "Pokud chyba přetrvává, kontaktuj administrátora."
+                    Title = "An error occurred while retrieving the room",
+                    Description = "Check whether the room exists. If the error persists, contact the administrator."
                 });
             }
         }
@@ -85,21 +95,22 @@ namespace EvidenceRezervaceMistnosti.Controllers
                 Reservation? reservation = await _ctx.Reservation
                     .AsNoTracking()
                     .Include(r => r.Room)
-                    .FirstOrDefaultAsync(r => r.ReservationId == id);
+                    .FirstOrDefaultAsync(r => r.ReservationId == id && r.IsActive);
 
                 if (reservation == null)
                 {
                     _logger.LogWarning("Při získávání rezervace s ID {id} nastala chyba", id);
+                    Response.StatusCode = StatusCodes.Status404NotFound;
                     return View("CstmError", new CstmErrorViewModel
                     {
-                        Title = "Při získávání rezervace nastala chyba",
-                        Description = "Zkontroluj, zda daná rezervace existuje. " +
-                        "Pokud chyba přetrvává, kontaktuj administrátora."
+                        Title = "An error occurred while retrieving the reservation",
+                        Description = "Check whether the reservation exists. If the error persists, contact the administrator."
                     });
                 }
 
                 ReservationDetailViewModel model = new()
                 {
+                    ReservationId = reservation.ReservationId,
                     Name = reservation.Name,
                     LastName = reservation.LastName,
                     Email = reservation.Email,
@@ -111,6 +122,7 @@ namespace EvidenceRezervaceMistnosti.Controllers
                     Description = reservation.Description,
                     Rooms = await _ctx.Room
                         .AsNoTracking()
+                        .Where(r => r.IsActive)
                         .Select(r => new RoomSelectDTO
                         {
                             RoomId = r.RoomId,
@@ -125,11 +137,11 @@ namespace EvidenceRezervaceMistnosti.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Chyba při získání detailu rezervace s {id}");
+                Response.StatusCode = StatusCodes.Status500InternalServerError;
                 return View("CstmError", new CstmErrorViewModel
                 {
-                    Title = "Při získávání rezervace nastala chyba",
-                    Description = "Zkontroluj, zda daná rezervace existuje. " +
-                       "Pokud chyba přetrvává, kontaktuj administrátora."
+                    Title = "An error occurred while retrieving the reservation",
+                    Description = "Check whether the reservation exists. If the error persists, contact the administrator."
                 });
             }
         }

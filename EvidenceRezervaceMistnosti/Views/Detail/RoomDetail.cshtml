@@ -1,85 +1,196 @@
-﻿@using EvidenceRezervaceMistnosti.Models.ViewModel;
+@using EvidenceRezervaceMistnosti.Models.ViewModel;
+@using Microsoft.Extensions.Localization;
 
 @model RoomDetailViewModel
 
-<link rel="stylesheet" href="~/css/homepage.css" />
-<link rel="stylesheet" href="~/css/form.css" />
-<link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
-<link href="~/lib/toastify-js/toastify.min.css" rel="stylesheet" />
-<link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+@inject IStringLocalizer<Trans> Localizer
 
-<div class="page-container py-4">
-    <h2 class="header mb-4 text-center">
-        Evidence rezervací zasedacích místností
-    </h2>
-    <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
-        <div class="row g-0 h-100">
-            <main class="col-12  main-content">
-                <div class="row g-2 mb-4">
-                    <div class="col-1">
-                        <a asp-controller="Dashboard"
-                           asp-action="RoomDashboard"
-                           style="cursor: pointer"
-                           class="detail-tab">
-                            Zpět
-                        </a>
-                    </div>
+@{
+    ViewData["Title"] = Localizer["Room detail"];
+}
+
+@section Style {
+    <link rel="stylesheet" href="~/css/form.css" />
+    <link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
+    <link href="~/lib/toastify-js/toastify.min.css" rel="stylesheet" />
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+}
+
+<div class="page-container form-page py-4">
+    <div class="container form-page-width">
+        <div class="form-page-toolbar">
+            <a asp-controller="Dashboard"
+               asp-action="RoomDashboard"
+               class="btn btn-sm btn-outline-secondary form-back-button">
+                <span aria-hidden="true">←</span>
+                @Localizer["Back"]
+            </a>
+        </div>
+
+        <article class="form-workspace is-readonly" data-form-workspace>
+            <header class="form-intro">
+                <div>
+                    <h1 class="form-title">@Localizer["Room detail"]</h1>
                 </div>
-                <div class="detail-container">
-                    <form>
-                        <div class="form-group mb-3">
-                            <label asp-for="Name" class="form-label">Název místnosti</label>
-                            <input disabled asp-for="Name" type="text" maxlength="120" class="form-control" />
+                <span id="form-status" class="form-status">
+                    <span id="form-status-text">@Localizer["View mode"]</span>
+                </span>
+            </header>
+
+            <form id="room-form"
+                  class="app-form"
+                  method="post"
+                  novalidate
+                  data-mode="edit"
+                  data-room-id="@Model.RoomId"
+                  data-view-status="@Localizer["View mode"]"
+                  data-edit-status="@Localizer["Edit mode"]"
+                  data-saving-label="@Localizer["Saving..."]"
+                  data-search-equipment="@Localizer["Search equipment..."]"
+                  data-select-equipment="@Localizer["Select equipment..."]"
+                  data-no-equipment="@Localizer["No more equipment to choose"]"
+                  data-search-locations="@Localizer["Search locations..."]"
+                  data-select-location="@Localizer["Select a location..."]"
+                  data-no-locations="@Localizer["No more locations to choose"]"
+                  data-click-to-select="@Localizer["Click to select"]"
+                  data-success-title="@Localizer["Great job!"]"
+                  data-success-message="@Localizer["Room was updated successfully!"]"
+                  data-name-required="@Localizer["Enter a room name"]"
+                  data-name-length="@Localizer["Room name must contain 5 to 120 characters"]"
+                  data-capacity-range="@Localizer["Capacity must be between 1 and 1000"]"
+                  data-location-required="@Localizer["Select a location"]"
+                  data-validation-summary="@Localizer["Please correct the highlighted fields"]"
+                  data-server-error="@Localizer["Server error while saving"]"
+                  data-connection-error="@Localizer["Could not connect to the server"]">
+
+                <section class="form-section" aria-labelledby="room-basic-heading">
+                    <div class="form-section-heading">
+                        <div>
+                            <h2 id="room-basic-heading">@Localizer["Basic information"]</h2>
+                            <p>@Localizer["Room name must contain 5 to 120 characters"]</p>
                         </div>
-                        <div class="form-group mb-3">
-                            <label asp-for="Capacity" class="form-label">Kapacita</label>
-                            <input disabled type="number" asp-for="Capacity" class="form-control" />
+                    </div>
+
+                    <div class="form-grid form-grid--room-basics">
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                @Localizer["Room Name"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input disabled
+                                   id="name"
+                                   name="Name"
+                                   value="@Model.Name"
+                                   type="text"
+                                   minlength="5"
+                                   maxlength="120"
+                                   class="form-control form-control-lg"
+                                   autocomplete="off"
+                                   aria-describedby="room-name-help"
+                                   required />
+                            <div id="room-name-help" class="form-text">@Localizer["Room name must contain 5 to 120 characters"]</div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label asp-for="SelectedLocationId" class="form-label">Umístění</label>
-                            <select disabled asp-for="SelectedLocationId" id="location-select" class="form-control">
-                                <option value="">Vyberte umístění</option>
+
+                        <div class="form-group">
+                            <label for="capacity-input" class="form-label">
+                                @Localizer["Capacity"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input disabled
+                                   id="capacity-input"
+                                   name="Capacity"
+                                   value="@Model.Capacity"
+                                   type="number"
+                                   min="1"
+                                   max="1000"
+                                   step="1"
+                                   class="form-control form-control-lg"
+                                   inputmode="numeric"
+                                   aria-describedby="room-capacity-help"
+                                   required />
+                            <div id="room-capacity-help" class="form-text">@Localizer["Capacity must be between 1 and 1000"]</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section" aria-labelledby="room-setup-heading">
+                    <div class="form-section-heading">
+                        <div>
+                            <h2 id="room-setup-heading">@Localizer["Location and equipment"]</h2>
+                            <p>@Localizer["Select a location"]</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid form-grid--room-setup">
+                        <div class="form-group">
+                            <label for="location-select" class="form-label">
+                                @Localizer["Location"]
+                                <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <select disabled name="LocationId" id="location-select" class="form-select form-select-lg" required>
+                                <option value="">@Localizer["Select a location"]</option>
                                 @if (Model.LocationSelect == null || !Model.LocationSelect.Any())
                                 {
-                                    <option value="" disabled>Žádné umístění  k dispozici</option>
+                                    <option value="" disabled>@Localizer["No locations available"]</option>
                                 }
                                 else
                                 {
                                     foreach (var floor in Model.LocationSelect)
                                     {
-                                        <option value="@floor.LocationId">
-                                            @floor.LocationName
+                                        <option value="@floor.LocationId"
+                                                selected="@(Model.SelectedLocationId == floor.LocationId ? "selected" : null)">
+                                            @Localizer[floor.LocationName]
                                         </option>
                                     }
                                 }
                             </select>
                         </div>
-                        <div class="form-group mb-3">
-                            <label asp-for="SelectedGearId" class="form-label">Vybavení</label>
-                            <select disabled asp-for="SelectedGearId" class="form-control" id="gear-select" multiple>
+
+                        <div class="form-group">
+                            <div class="form-field-label d-flex justify-content-between align-items-center gap-2">
+                                <label for="gear-select" class="form-label mb-0">@Localizer["Equipment"]</label>
+                                <span class="optional-label">@Localizer["Optional"]</span>
+                            </div>
+                            <select disabled name="GearIds" class="form-select" id="gear-select" multiple>
                                 @if (Model.EquipmentSelect == null || !Model.EquipmentSelect.Any())
                                 {
-                                    <option value="" disabled>Žádné vybavení k dispozici</option>
+                                    <option value="" disabled>@Localizer["No equipment available"]</option>
                                 }
                                 else
                                 {
                                     foreach (var equipment in Model.EquipmentSelect)
                                     {
-                                        <option value="@equipment.EquipmentId">
-                                            @equipment.EquipmentName
+                                        <option value="@equipment.EquipmentId"
+                                                selected="@(Model.SelectedGearId?.Contains(equipment.EquipmentId) == true ? "selected" : null)">
+                                            @Localizer[equipment.EquipmentName]
                                         </option>
                                     }
                                 }
                             </select>
                         </div>
-                        <button type="submit" class="btn button-submit">Vytvořit</button>
-                    </form>
-                </div>
-            </main>
-        </div>
+                    </div>
+                </section>
+
+                <footer class="form-actions form-actions-split mb-4">
+                    <a asp-controller="Dashboard"
+                       asp-action="RoomDashboard"
+                       class="btn btn-outline-secondary">
+                        @Localizer["Back"]
+                    </a>
+                    <div class="form-action-group">
+                        <button type="button" id="edit-form" class="btn btn-success">@Localizer["Edit Room"]</button>
+                        <button type="submit" id="save-form" class="btn btn-success button-submit" hidden>@Localizer["Save Room"]</button>
+                        <button type="button" id="cancel-edit" class="btn btn-outline-secondary" hidden>@Localizer["Cancel editing"]</button>
+                    </div>
+                </footer>
+            </form>
+        </article>
     </div>
 </div>
-<script src="~/lib/choices.js/choices.min.js"></script>
-<script src="~/lib/toastify-js/toastify.min.js"></script>
-<script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="~/js/form/RoomForm.js"></script>
+
+@section Scripts {
+    <script src="~/lib/choices.js/choices.min.js"></script>
+    <script src="~/lib/toastify-js/toastify.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/js/form/RoomForm.js" asp-append-version="true"></script>
+}

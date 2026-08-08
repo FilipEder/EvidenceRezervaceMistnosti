@@ -33,7 +33,7 @@ namespace EvidenceRezervaceMistnosti.API
 
                 if (rooms == null)
                 {
-                    _logger.LogWarning("Žádné místnosti nebyly nalezeny");
+                    _logger.LogWarning("No rooms found");
                     return Problem(
                         type: "",
                         title: "Žádné místnosti nebyly nalezeny",
@@ -82,7 +82,7 @@ namespace EvidenceRezervaceMistnosti.API
 
                 if (room == null)
                 {
-                    _logger.LogWarning("Žádna místnost se nenašla s ID {id}", id);
+                    _logger.LogWarning("No room found with ID {id}", id);
                     return Problem(
                         type: "",
                         title: "Daná místnost se nenašla",
@@ -224,6 +224,110 @@ namespace EvidenceRezervaceMistnosti.API
             }
         }
 
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id, [FromBody] RoomRequest request)
+        {
+            await using var transaction = await _ctx.Database
+                .BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
+
+            try
+            {
+                Room? room = await _ctx.Room
+                    .FirstOrDefaultAsync(item => item.RoomId == id && item.IsActive);
+
+                if (room == null)
+                {
+                    return Problem(
+                        type: "",
+                        title: "Místnost nebyla nalezena",
+                        detail: $"Aktivní místnost s ID {id} neexistuje.",
+                        statusCode: StatusCodes.Status404NotFound,
+                        instance: HttpContext.Request.Path
+                    );
+                }
+
+                string roomName = request.Name.Trim();
+                bool roomDuplicate = await _ctx.Room
+                    .AsNoTracking()
+                    .AnyAsync(item => item.RoomId != id && item.Name == roomName);
+
+                if (roomDuplicate)
+                {
+                    return Problem(
+                        type: "",
+                        title: "Místnost s tímto názvem již existuje",
+                        detail: $"Místnost s názvem {roomName} již existuje.",
+                        statusCode: StatusCodes.Status409Conflict,
+                        instance: HttpContext.Request.Path
+                    );
+                }
+
+                bool locationExists = await _ctx.Location
+                    .AsNoTracking()
+                    .AnyAsync(location => location.LocationId == request.LocationId && location.IsActive);
+
+                if (!locationExists)
+                {
+                    return Problem(
+                        type: "",
+                        title: "Umístění neexistuje",
+                        detail: $"Aktivní umístění s ID {request.LocationId} neexistuje.",
+                        statusCode: StatusCodes.Status400BadRequest,
+                        instance: HttpContext.Request.Path
+                    );
+                }
+
+                int[] gearIds = request.GearIds?.Distinct().ToArray() ?? Array.Empty<int>();
+                int validGearCount = await _ctx.Equipment
+                    .AsNoTracking()
+                    .CountAsync(equipment => gearIds.Contains(equipment.EquipmentId) && equipment.IsActive);
+
+                if (validGearCount != gearIds.Length)
+                {
+                    return Problem(
+                        type: "",
+                        title: "Zadané vybavení neexistuje",
+                        detail: "Jedna nebo více vybraných položek vybavení nejsou aktivní.",
+                        statusCode: StatusCodes.Status400BadRequest,
+                        instance: HttpContext.Request.Path
+                    );
+                }
+
+                room.Name = roomName;
+                room.Capacity = request.Capacity;
+                room.LocationId = request.LocationId;
+
+                List<RoomEquipment> currentEquipment = await _ctx.RoomEquipment
+                    .Where(item => item.RoomId == id)
+                    .ToListAsync();
+
+                _ctx.RoomEquipment.RemoveRange(currentEquipment);
+                _ctx.RoomEquipment.AddRange(gearIds.Select(equipmentId => new RoomEquipment
+                {
+                    RoomId = id,
+                    EquipmentId = equipmentId
+                }));
+
+                await _ctx.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Místnost s ID {id} byla upravena", id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Chyba při úpravě místnosti s ID {id}", id);
+                return Problem(
+                    type: "",
+                    title: "Chyba při úpravě místnosti",
+                    detail: "Zkuste to později, pokud by problém nadále trval, kontaktujte administrátora.",
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    instance: HttpContext.Request.Path
+                );
+            }
+        }
+
         [HttpGet("{id:int}/reservations")]
         public async Task<ActionResult<List<ReservationResponse>>> GetReservations(int id)
         {
@@ -268,7 +372,7 @@ namespace EvidenceRezervaceMistnosti.API
                         Email = e.Email,
                         LastName = e.LastName,
                         ReservationName = e.Name, 
-                        DateReservation = e.DateReservation.ToString("dd.MM.yyyy"),
+                        DateReservation = e.DateReservation,
                         RoomCapacity = e.NumberOfPeople,
                         RoomName = e.Name,
                         Description = e.Description,

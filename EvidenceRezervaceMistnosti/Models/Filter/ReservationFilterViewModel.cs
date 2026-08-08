@@ -5,6 +5,7 @@ namespace EvidenceRezervaceMistnosti.Models.Filter
     public class ReservationFilterViewModel
     {
         public string? Search { get; set; }
+        public int? RoomId { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Počet osob musí být kladný")]
         public int? NumberOfPeople { get; set; }
         public DateOnly? Day { get; set; }

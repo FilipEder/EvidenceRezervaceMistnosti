@@ -1,4 +1,7 @@
-﻿@using EvidenceRezervaceMistnosti.Models.ViewModel;
+﻿@using Microsoft.Extensions.Localization;
+@using EvidenceRezervaceMistnosti.Models.ViewModel;
+
+@inject IStringLocalizer<Trans> Localizer;
 
 @{
     ViewData["Title"] = "Dashboard místností";
@@ -6,40 +9,44 @@
 
 @model RoomDashboardViewModel
 
+@section Style {
+    <link href="~/lib/choices.js/choices.min.css" rel="stylesheet" />
+}
+
 <link rel="stylesheet" href="~/css/homepage.css" />
 <div class="page-container py-4">
 
     <h2 class="header mb-4 text-center">
-        Evidence rezervací zasedacích místností
+        @Localizer["Meeting Room Reservation Records"]
     </h2>
     <div class="container reservation-container bg-white rounded shadow-sm" style="padding: 0 !important">
         <div class="row g-0 h-100">
             <!-- Levý panel s filtry -->
             <aside class="d-flex flex-column justify-content-between col-12 col-md-4 col-lg-3 filter-sidebar">
                 <form asp-controller="Dashboard"
-                      asp-action="Room"
+                      asp-action="RoomDashboard"
                       method="get">
                     <div class="fillter-upper-side">
                         <div class="sidebar-header">
-                            <h5>Filtrování místností</h5>
+                            <h5>@Localizer["Filter by Room"]</h5>
                         </div>
                         <!--Filtry-->
                         <!-- Vyhledávání -->
                         <div class="search-container mb-3">
                             <label class="form-label" for="searchInput">
-                                Vyhledávání
+                                @Localizer["Search"]
                             </label>
                             <input id="searchInput"
                                    class="form-control"
                                    name="search"
                                    value="@(Model.Search ?? "")"
-                                   placeholder="Vyhledejte místnost, vybavení nebo patro..."
+                                   placeholder="@Localizer["Search for a room, equipment, or floor..."]"
                                    type="search">
                         </div>
                         <!-- Kapacita -->
                         <div class="filter-section" id="CapacityFilter">
                             <div class="filter-header">
-                                Kapacita
+                                @Localizer["Capacity"]
                             </div>
                             <div class="row g-2">
                                 <div class="col-6">
@@ -47,7 +54,7 @@
                                     <input id="CapacityFromInput"
                                            class="form-control"
                                            type="number"
-                                           name="roomFilter.CapacityFrom"
+                                           name="CapacityFrom"
                                            value="@(Model.CapacityFrom?.ToString() ?? "")"
                                            min="1"
                                            placeholder="1">
@@ -57,7 +64,7 @@
                                     <input id="CapacityToInput"
                                            class="form-control"
                                            type="number"
-                                           name="roomFilter.CapacityTo"
+                                           name="CapacityTo"
                                            value="@(Model.CapacityTo?.ToString() ?? "")"
                                            min="1"
                                            placeholder="20">
@@ -67,30 +74,36 @@
                         <!-- Umístění -->
                         <div class="filter-section" id="LocationFilter">
                             <div class="filter-header">
-                                Umístění
+                                @Localizer["Location"]
                             </div>
 
-                            <label class="form-label" for="LocationSelect">Patro</label>
-                            <select id="LocationSelect" class="form-select" name="roomFilter.LocationId">
+                            <label class="form-label" for="LocationSelect">@Localizer["Floor"]</label>
+                            <select id="LocationSelect"
+                                    class="form-select"
+                                    name="LocationId"
+                                    data-choices-search="@Localizer["Search locations..."]"
+                                    data-choices-no-results="@Localizer["No matching results"]"
+                                    data-choices-no-options="@Localizer["No more locations to choose"]"
+                                    data-choices-select-text="@Localizer["Click to select"]">
                                 @if (Model.Locations == null || !Model.Locations.Any())
                                 {
-                                    <option value="" disabled>Žádná umístění k dispozici</option>
+                                    <option value="" disabled>@Localizer["No locations available"]</option>
                                 }
                                 else
                                 {
-                                    <option value="" selected>Všechna umístění</option>
+                                    <option value="" selected>@Localizer["All Locations"]</option>
                                     foreach (var floor in Model.Locations)
                                     {
                                         if (floor.LocationId == Model.LocationId)
                                         {
                                             <option value="@floor.LocationId" selected>
-                                                @floor.LocationName
+                                                @Localizer[floor.LocationName]
                                             </option>
                                         }
                                         else
                                         {
                                             <option value="@floor.LocationId">
-                                                @floor.LocationName
+                                                @Localizer[floor.LocationName]
                                             </option>
                                         }
                                     }
@@ -100,31 +113,37 @@
                         <!-- Vybavení -->
                         <div class="filter-section" id="EquipmentFilter">
                             <div class="filter-header">
-                                Vybavení
+                                @Localizer["Equipment"]
                             </div>
                             <label class="form-label" for="EquipmentSelect">
-                                Typ vybavení
+                                @Localizer["Equipment Type"]
                             </label>
-                            <select id="EquipmentSelect" class="form-select" name="EquipmentId">
+                            <select id="EquipmentSelect"
+                                    class="form-select"
+                                    name="EquipmentId"
+                                    data-choices-search="@Localizer["Search equipment..."]"
+                                    data-choices-no-results="@Localizer["No matching results"]"
+                                    data-choices-no-options="@Localizer["No more equipment to choose"]"
+                                    data-choices-select-text="@Localizer["Click to select"]">
                                 @if (Model.Equipments == null || !Model.Equipments.Any())
                                 {
-                                    <option value="" disabled>Žádné vybavení k dispozici</option>
+                                    <option value="" disabled>@Localizer["No equipment available"]</option>
                                 }
                                 else
                                 {
-                                    <option value="" selected>Všechna vybavení</option>
+                                    <option value="" selected="@(Model.EquipmentId == null ? "selected" : null)">@Localizer["All Equipment"]</option>
                                     foreach (var equipment in Model.Equipments)
                                     {
                                         if (equipment.EquipmentId == Model.EquipmentId)
                                         {
                                             <option value="@equipment.EquipmentId" selected>
-                                                @equipment.EquipmentName
+                                                @Localizer[equipment.EquipmentName]
                                             </option>
                                         }
                                         else
                                         {
                                             <option value="@equipment.EquipmentId">
-                                                @equipment.EquipmentName
+                                                @Localizer[equipment.EquipmentName]
                                             </option>
                                         }
                                     }
@@ -136,10 +155,10 @@
                         <!-- Tlačítka -->
                         <div class="d-grid gap-2 mt-3 filter-buttons">
                             <button id="filterButton" class="btn btn-success" type="submit">
-                                Použít filtry
+                                @Localizer["Apply Filters"]
                             </button>
                             <button id="clearFilterButton" class="btn btn-outline-secondary" type="button">
-                                Vymazat filtry
+                                @Localizer["Clear Filters"]
                             </button>
                         </div>
                     </div>
@@ -154,13 +173,13 @@
                         <a asp-controller="Dashboard"
                            asp-action="ReservationDashboard"
                            class="detail-tab">
-                            Rezervace
+                            @Localizer["Reservations"]
                         </a>
                     </div>
                     <div class="col-6">
                         <a 
                            class="detail-tab active">
-                            Místnosti
+                            @Localizer["Rooms"]
                         </a>
                     </div>
                 </div>
@@ -170,3 +189,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/lib/choices.js/choices.min.js"></script>
+}
